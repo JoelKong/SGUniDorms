@@ -8,9 +8,6 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      darkmodeblack: "#121212",
-    },
     extend: {},
   },
   plugins: [],
