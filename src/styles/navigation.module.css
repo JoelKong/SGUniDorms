@@ -1,0 +1,8 @@
+.titleGradient {
+  background: -webkit-linear-gradient(#46458f, #fbc7d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-left: 1rem;
+  font-weight: 900;
+  font-size: 20px;
+}
