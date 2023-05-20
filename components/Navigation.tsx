@@ -1,7 +1,12 @@
 import styles from "@/styles/navigation.module.css";
 import { FiLogIn } from "react-icons/fi";
 import Image from "next/image";
-import SubNavigationNUS from "./SubNavigationNUS";
+import SubNavigation from "./SubNavigation";
+import {
+  nusResidences,
+  ntuResidences,
+  smuResidences,
+} from "../utils/universities";
 import { useState } from "react";
 
 export default function Navigation(): JSX.Element {
@@ -38,7 +43,7 @@ export default function Navigation(): JSX.Element {
                   activeElement === "nus" && "border-b-2"
                 }`}
               ></div>
-              <SubNavigationNUS />
+              <SubNavigation schoolResidences={nusResidences} />
             </div>
             <div className="flex flex-col">
               <p
