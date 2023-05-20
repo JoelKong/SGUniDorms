@@ -1,9 +1,10 @@
 import styles from "@/styles/navigation.module.css";
 import { FiLogIn } from "react-icons/fi";
 import Image from "next/image";
+import SubNavigationNUS from "./SubNavigationNUS";
 import { useState } from "react";
 
-export default function Navigation() {
+export default function Navigation(): JSX.Element {
   const [activeElement, setActiveElement] = useState<String | null>(null);
 
   return (
@@ -24,7 +25,7 @@ export default function Navigation() {
                 </div>
               </a>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col relative">
               <p
                 className="hidden md:block text-gray-400 hover:text-white px-3 py-2 rounded-md text-md font-medium cursor-pointer"
                 onMouseEnter={() => setActiveElement("nus")}
@@ -37,6 +38,7 @@ export default function Navigation() {
                   activeElement === "nus" && "border-b-2"
                 }`}
               ></div>
+              <SubNavigationNUS />
             </div>
             <div className="flex flex-col">
               <p
