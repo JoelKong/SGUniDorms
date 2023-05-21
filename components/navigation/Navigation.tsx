@@ -3,6 +3,7 @@ import { FiLogIn } from "react-icons/fi";
 import Image from "next/image";
 import SubNavigation from "../navigation/SubNavigation";
 import SlidingPane from "react-sliding-pane";
+import MobileNavContent from "./MobileNavContent";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
@@ -40,7 +41,7 @@ export default function Navigation(): JSX.Element {
             <div className="md:hidden flex justify-end sm:flex w-full h-9 text-white">
               <div className="pr-3">
                 <div className="ml-10 flex items-baseline space-x-4">
-                  <button className="text-white px-3 py-1.5 rounded-md text-md font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500">
+                  <button className="text-white px-3 py-1.5 rounded-md text-md font-medium w-24 bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500">
                     <p className="flex items-center text">
                       Sign In <FiLogIn className="ml-1 " />
                     </p>
@@ -65,22 +66,17 @@ export default function Navigation(): JSX.Element {
 
             <div>
               <SlidingPane
-                className="w-6"
-                overlayClassName=""
                 isOpen={toggleState.isPaneOpen}
-                // title="Hey, it is optional pane title.  I can be React component too."
-                // subtitle="Optional subtitle."
                 closeIcon={
-                  <div className="flex w-[65vw] justify-end">
+                  <div className="absolute top-6 right-6">
                     <XMarkIcon className="scale-[2]" />
                   </div>
                 }
                 onRequestClose={() => {
-                  // triggered on "<" on left top click or on outside click
                   setToggleState({ isPaneOpen: false });
                 }}
               >
-                <div>And I am pane content. BTW, what rocks?</div>
+                <MobileNavContent />
               </SlidingPane>
             </div>
 
