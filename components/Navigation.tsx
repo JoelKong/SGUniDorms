@@ -36,7 +36,12 @@ export default function Navigation(): JSX.Element {
               onMouseOver={() => setActiveElement("nus")}
               onMouseOut={() => setActiveElement(null)}
             >
-              <p className="hidden md:block text-gray-400 hover:text-white px-3 py-2 rounded-md text-md font-medium cursor-pointer">
+              <p
+                className="hidden md:block text-gray-400 w-[75px] text-center hover:text-white px-3 py-2 rounded-md text-md font-medium cursor-pointer"
+                onClick={() =>
+                  setActiveElement((prev) => (prev === "nus" ? null : "nus"))
+                }
+              >
                 NUS
               </p>
               {activeElement === "nus" && (
@@ -55,7 +60,12 @@ export default function Navigation(): JSX.Element {
               onMouseOver={() => setActiveElement("ntu")}
               onMouseOut={() => setActiveElement(null)}
             >
-              <p className="hidden md:block text-gray-400 hover:text-white px-3 py-2 rounded-md text-md font-medium cursor-pointer">
+              <p
+                className="hidden md:block text-gray-400 w-[75px] text-center hover:text-white px-3 py-2 rounded-md text-md font-medium cursor-pointer"
+                onClick={() =>
+                  setActiveElement((prev) => (prev === "ntu" ? null : "ntu"))
+                }
+              >
                 NTU
               </p>
               {activeElement === "ntu" && (
@@ -74,7 +84,12 @@ export default function Navigation(): JSX.Element {
               onMouseOver={() => setActiveElement("smu")}
               onMouseOut={() => setActiveElement(null)}
             >
-              <p className="hidden md:block text-gray-400 hover:text-white px-3 py-2 rounded-md text-md font-medium cursor-pointer">
+              <p
+                className="hidden md:block text-gray-400 w-[75px] text-center hover:text-white px-3 py-2 rounded-md text-md font-medium cursor-pointer"
+                onClick={() =>
+                  setActiveElement((prev) => (prev === "smu" ? null : "smu"))
+                }
+              >
                 SMU
               </p>
               {activeElement === "smu" && (
@@ -90,14 +105,11 @@ export default function Navigation(): JSX.Element {
 
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                <a
-                  href="/"
-                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-md font-medium"
-                >
-                  <p className="flex items-center">
+                <button className="text-white px-3 py-1.5 rounded-md text-md font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500">
+                  <p className="flex items-center text">
                     Sign In <FiLogIn className="ml-1 " />
                   </p>
-                </a>
+                </button>
               </div>
             </div>
           </div>
