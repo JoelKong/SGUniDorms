@@ -30,49 +30,64 @@ export default function Navigation(): JSX.Element {
                 </div>
               </a>
             </div>
-            <div className="flex flex-col relative">
-              <p
-                className="hidden md:block text-gray-400 hover:text-white px-3 py-2 rounded-md text-md font-medium cursor-pointer"
-                onMouseEnter={() => setActiveElement("nus")}
-                onMouseLeave={() => setActiveElement(null)}
-              >
+
+            <div
+              className="flex flex-col relative"
+              onMouseOver={() => setActiveElement("nus")}
+              onMouseOut={() => setActiveElement(null)}
+            >
+              <p className="hidden md:block text-gray-400 hover:text-white px-3 py-2 rounded-md text-md font-medium cursor-pointer">
                 NUS
               </p>
-              <div
-                className={`w-full h-0  ${
-                  activeElement === "nus" && "border-b-2"
-                }`}
-              ></div>
-              <SubNavigation schoolResidences={nusResidences} />
+              {activeElement === "nus" && (
+                <>
+                  <div className="w-full h-0 border-b-4 border-b-indigo-400"></div>
+                  <SubNavigation
+                    schoolResidences={nusResidences}
+                    setActiveElement={setActiveElement}
+                  />
+                </>
+              )}
             </div>
-            <div className="flex flex-col">
-              <p
-                className="hidden md:block text-gray-400 hover:text-white px-3 py-2 rounded-md text-md font-medium cursor-pointer"
-                onMouseEnter={() => setActiveElement("ntu")}
-                onMouseLeave={() => setActiveElement(null)}
-              >
+
+            <div
+              className="flex flex-col relative"
+              onMouseOver={() => setActiveElement("ntu")}
+              onMouseOut={() => setActiveElement(null)}
+            >
+              <p className="hidden md:block text-gray-400 hover:text-white px-3 py-2 rounded-md text-md font-medium cursor-pointer">
                 NTU
               </p>
-              <div
-                className={`w-full h-0  ${
-                  activeElement === "ntu" && "border-b-2"
-                }`}
-              ></div>
+              {activeElement === "ntu" && (
+                <>
+                  <div className="w-full h-0 border-b-4 border-b-indigo-400"></div>
+                  <SubNavigation
+                    schoolResidences={ntuResidences}
+                    setActiveElement={setActiveElement}
+                  />
+                </>
+              )}
             </div>
-            <div className="flex flex-col">
-              <p
-                className="hidden md:block text-gray-400 hover:text-white px-3 py-2 rounded-md text-md font-medium cursor-pointer"
-                onMouseEnter={() => setActiveElement("smu")}
-                onMouseLeave={() => setActiveElement(null)}
-              >
+
+            <div
+              className="flex flex-col relative"
+              onMouseOver={() => setActiveElement("smu")}
+              onMouseOut={() => setActiveElement(null)}
+            >
+              <p className="hidden md:block text-gray-400 hover:text-white px-3 py-2 rounded-md text-md font-medium cursor-pointer">
                 SMU
               </p>
-              <div
-                className={`w-full h-0  ${
-                  activeElement === "smu" && "border-b-2"
-                }`}
-              ></div>
+              {activeElement === "smu" && (
+                <>
+                  <div className="w-full h-0 border-b-4 border-b-indigo-400"></div>
+                  <SubNavigation
+                    schoolResidences={smuResidences}
+                    setActiveElement={setActiveElement}
+                  />
+                </>
+              )}
             </div>
+
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 <a
