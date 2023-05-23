@@ -1,10 +1,31 @@
 import { useState, useEffect, FormEvent } from "react";
+import { signIn } from "next-auth/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { FcGoogle } from "react-icons/fc";
 
 export default function SignInForm({ setSignIn }: any): JSX.Element {
   const [disable, setDisable] = useState<boolean>(false);
   const [signUp, setSignUp] = useState<boolean>(false);
+  const [credentialsLogIn, setCredentialsLogIn] = useState<any>({
+    email: "",
+    password: "",
+  });
+  const [credentialsSignUp, setCredentialsSignUp] = useState<any>({
+    displayName: "",
+    email: "",
+    password: "",
+  });
+
+  function handleChange(e: any): void {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    if (signUp) {
+      setCredentialsSignUp({ ...credentialsSignUp, [name]: value });
+    } else {
+      setCredentialsLogIn({ ...credentialsLogIn, [name]: value });
+    }
+  }
 
   function logInSignUp(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -48,6 +69,9 @@ export default function SignInForm({ setSignIn }: any): JSX.Element {
               className="mt-10 pl-2 pr-2 w-full md:w-3/4 h-9 rounded-md font-semibold focus:outline-none focus:border-violet-300 focus:border-4 border-4 tracking-wide"
               placeholder="Display Name"
               autoFocus
+              value={credentialsSignUp.displayName}
+              name="displayName"
+              onChange={(e) => handleChange(e)}
             ></input>
           )}
           <input
@@ -55,12 +79,20 @@ export default function SignInForm({ setSignIn }: any): JSX.Element {
               signUp ? "mt-3" : "mt-10"
             } pl-2 pr-2 w-full md:w-3/4 h-9 rounded-md font-semibold focus:outline-none focus:border-violet-300 focus:border-4 border-4 tracking-wide`}
             placeholder="Email"
+            name="email"
+            value={signUp ? credentialsSignUp.email : credentialsLogIn.email}
+            onChange={(e) => handleChange(e)}
             autoFocus
           ></input>
           <input
             className="mt-3 pl-2 pr-2 w-full md:w-3/4 h-9 rounded-md font-semibold focus:outline-none focus:border-violet-300 focus:border-4 border-4 tracking-wide"
             placeholder="Password"
             type="password"
+            name="password"
+            value={
+              signUp ? credentialsSignUp.password : credentialsLogIn.password
+            }
+            onChange={(e) => handleChange(e)}
           ></input>
           <button
             className="mt-5 w-full md:w-3/4 h-8 text-white disabled:bg-blue-300 hover:bg-blue-600 bg-blue-500 rounded-md font-medium focus:outline-none focus:border-violet-300 focus:border-2"
@@ -73,7 +105,10 @@ export default function SignInForm({ setSignIn }: any): JSX.Element {
             <span className="pl-4 pr-4 text-gray-300 tracking-wide">OR</span>
             <div className="border-t-2 border-gray-400 w-2/4"></div>
           </div>
-          <button className="flex flex-row w-full md:w-3/4 h-10 mt-8 items-center border-4 rounded-md bg-white focus:outline-none focus:border-violet-300">
+          <button
+            className="flex flex-row w-full md:w-3/4 h-10 mt-8 items-center border-4 rounded-md bg-white focus:outline-none focus:border-violet-300"
+            onClick={() => signIn("google")}
+          >
             <FcGoogle className="m-4 scale-125" />
             <p className="tracking-wide font-normal">Continue with Google</p>
           </button>
@@ -82,7 +117,15 @@ export default function SignInForm({ setSignIn }: any): JSX.Element {
               {signUp ? "Have an account? " : "Don't have an account? "}
               <button
                 className="cursor-pointer text-blue-400 font-semibold"
-                onClick={() => setSignUp((prev) => !prev)}
+                onClick={() => {
+                  setSignUp((prev) => !prev);
+                  setCredentialsLogIn({ email: "", password: "" });
+                  setCredentialsSignUp({
+                    displayName: "",
+                    email: "",
+                    password: "",
+                  });
+                }}
               >
                 {signUp ? "Log In" : "Sign Up"}
               </button>
