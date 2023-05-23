@@ -1,5 +1,6 @@
 import { useState, useEffect, DOMElement, FormEvent } from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { FcGoogle } from "react-icons/fc";
 
 export default function SignInForm({ setSignIn }: any): JSX.Element {
   const [disable, setDisable] = useState<boolean>(false);
@@ -28,7 +29,7 @@ export default function SignInForm({ setSignIn }: any): JSX.Element {
         onSubmit={(e) => logIn(e)}
       >
         <div
-          className="absolute text-pink-400 w-8 top-7 right-6 cursor-pointer"
+          className="absolute text-pink-400 w-8 top-7 right-6 cursor-pointer hover:text-pink-500"
           onClick={() => setSignIn(false)}
         >
           <XMarkIcon />
@@ -55,8 +56,20 @@ export default function SignInForm({ setSignIn }: any): JSX.Element {
           </button>
           <div className="flex flex-row w-full md:w-3/4 mt-8 items-center">
             <div className="border-t-2 border-gray-400 w-2/4"></div>
-            <span className="pl-4 pr-4 text-gray-300">OR</span>
+            <span className="pl-4 pr-4 text-gray-300 tracking-wide">OR</span>
             <div className="border-t-2 border-gray-400 w-2/4"></div>
+          </div>
+          <button className="flex flex-row w-full md:w-3/4 h-10 mt-8 items-center border-4 rounded-md bg-white focus:outline-none focus:border-violet-300">
+            <FcGoogle className="m-4 scale-125" />
+            <p className="tracking-wide font-normal">Continue with Google</p>
+          </button>
+          <div className="w-full md:w-3/4 text-center mt-12 tracking-wide">
+            <p>
+              Don't have an account?{" "}
+              <button className="cursor-pointer text-blue-400 font-semibold focus:outline-none focus:border-violet-300 focus:border-2">
+                Sign up
+              </button>
+            </p>
           </div>
         </div>
       </form>
