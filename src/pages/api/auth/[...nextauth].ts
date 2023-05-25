@@ -19,11 +19,11 @@ export const authOptions = {
   ],
 
   callbacks: {
-    // async jwt({ token, account, profile }) {
-    //   console.log(token);
+    // async jwt({ token, user }) {
+    //   return { ...token, ...user };
     // },
-    // async session(session: any, token, user) {
-    //   console.log(session);
+    // async session(session: any, token: any) {
+    //   session.user = token;
     //   return session;
     // },
     // async signIn(user: any, account: any, profile: any) {
