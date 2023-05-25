@@ -1,5 +1,7 @@
 import Navigation from "../../components/navigation/Navigation";
 import Image from "next/image";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]";
 
 export default function Home() {
   return (
@@ -15,4 +17,15 @@ export default function Home() {
       <Navigation />
     </main>
   );
+}
+
+export async function getServerSideProps(context: any) {
+  const session = await getServerSession(context.req, context.res, authOptions);
+  if (!session) {
+    return {};
+  }
+
+  return {
+    props: { session },
+  };
 }
