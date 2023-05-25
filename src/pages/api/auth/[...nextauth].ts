@@ -1,5 +1,7 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import db from "../../../../utils/firebaseInit";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 export const authOptions = {
   providers: [
@@ -19,17 +21,30 @@ export const authOptions = {
   ],
 
   callbacks: {
-    // async jwt({ token, user }) {
-    //   return { ...token, ...user };
-    // },
-    // async session(session: any, token: any) {
-    //   session.user = token;
-    //   return session;
-    // },
-    // async signIn(user: any, account: any, profile: any) {
-    //   console.log(user);
-    //   return user;
-    // },
+    async jwt({ token }: any) {
+      try {
+        const user = doc(db, "users", token.sub);
+        const checkUserExists = await getDoc(user);
+        if (checkUserExists.exists()) {
+          token.user = checkUserExists.data();
+          return token;
+        } else {
+          await setDoc(user, {
+            id: token.sub,
+            name: token.name,
+            email: token.email,
+            profilepicture: token.picture,
+          });
+          token.user = checkUserExists.data();
+          return token;
+        }
+      } catch (error) {
+        return token;
+      }
+    },
+    async session(session: any) {
+      return session.token.user;
+    },
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
