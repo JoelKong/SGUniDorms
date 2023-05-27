@@ -69,28 +69,5 @@ export default function MobileNavContent(): JSX.Element {
         <hr className="pb-10"></hr>
       </div>
     </>
-    // <div
-    //   className="flex flex-col relative"
-    //   //   onMouseOver={() => setActiveElement("nus")}
-    //   //   onMouseOut={() => setActiveElement(null)}
-    // >
-    //   <p
-    //     className="hidden md:block text-gray-400 w-[75px] text-center hover:text-white px-3 py-2 rounded-md text-md font-medium cursor-pointer"
-    //     // onClick={() =>
-    //     //   setActiveElement((prev) => (prev === "nus" ? null : "nus"))
-    //     // }
-    //   >
-    //     NUS
-    //   </p>
-    //   {/* {activeElement === "nus" && (
-    //   <>
-    //     <div className="w-full h-0 border-b-4 border-b-indigo-400"></div>
-    //     <SubNavigation
-    //       schoolResidences={nusResidences}
-    //       setActiveElement={setActiveElement}
-    //     />
-    //   </>
-    // )} */}
-    // </div>
   );
 }
