@@ -1,11 +1,11 @@
 import styles from "@/styles/navigation.module.css";
 import { FiLogIn } from "react-icons/fi";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import SubNavigation from "../navigation/SubNavigation";
 import SlidingPane from "react-sliding-pane";
 import MobileNavContent from "./MobileNavContent";
 import Profile from "./Profile";
-import SignInForm from "../signin/SignInForm";
 import ChangeNameForm from "./ChangeNameForm";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import { XMarkIcon } from "@heroicons/react/24/outline";
@@ -18,7 +18,6 @@ import { useState } from "react";
 
 export default function Navigation({ session }: any): JSX.Element {
   const [activeElement, setActiveElement] = useState<String | null>(null);
-  const [signIn, setSignIn] = useState<boolean>(false);
   const [changeName, setChangeName] = useState<boolean>(false);
   const [toggleState, setToggleState] = useState<any>({
     isPaneOpen: false,
@@ -26,7 +25,6 @@ export default function Navigation({ session }: any): JSX.Element {
 
   return (
     <>
-      {signIn && <SignInForm setSignIn={setSignIn} />}
       {changeName && (
         <ChangeNameForm setChangeName={setChangeName} session={session} />
       )}
@@ -59,7 +57,7 @@ export default function Navigation({ session }: any): JSX.Element {
                     ) : (
                       <button
                         className="text-white px-3 py-1.5 rounded-md text-md font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 w-24"
-                        onClick={() => setSignIn(true)}
+                        onClick={() => signIn("google")}
                       >
                         <p className="flex items-center">
                           Log In <FiLogIn className="ml-1 " />
@@ -179,7 +177,7 @@ export default function Navigation({ session }: any): JSX.Element {
                   ) : (
                     <button
                       className="text-white px-3 py-1.5 rounded-md text-md font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 w-24"
-                      onClick={() => setSignIn(true)}
+                      onClick={() => signIn("google")}
                     >
                       <p className="flex items-center">
                         Log In <FiLogIn className="ml-1 " />

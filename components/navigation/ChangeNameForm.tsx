@@ -38,7 +38,7 @@ export default function ChangeNameForm({
     });
 
     const status = await nameChange.json();
-    setModal({ active: true, type: "Success", message: status.message });
+    setModal({ active: true, type: status.type, message: status.message });
     setDisplayName("");
 
     router.replace(router.asPath);
