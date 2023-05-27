@@ -1,5 +1,6 @@
 import { useState, useEffect, FormEvent } from "react";
 import PasswordPanel from "./PasswordPanel";
+import Modal from "../navigation/Modal";
 import { signIn } from "next-auth/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { FcGoogle } from "react-icons/fc";
@@ -9,6 +10,11 @@ export default function SignInForm({ setSignIn }: any): JSX.Element {
   const [disable, setDisable] = useState<boolean>(false);
   const [signUp, setSignUp] = useState<boolean>(false);
   const [passwordPanel, setPasswordPanel] = useState<boolean>(false);
+  const [modal, setModal] = useState({
+    active: false,
+    type: "fail",
+    message: "",
+  });
   const [credentialsLogIn, setCredentialsLogIn] = useState<any>({
     email: "",
     password: "",
@@ -30,8 +36,61 @@ export default function SignInForm({ setSignIn }: any): JSX.Element {
     }
   }
 
-  async function logInSignUp(e: FormEvent<HTMLFormElement>) {
+  async function logInSignUp(
+    e: FormEvent<HTMLFormElement>,
+    credentialsLogIn: any,
+    credentialsSignUp: any
+  ) {
     e.preventDefault();
+    setDisable(true);
+
+    // Email Check
+    if (signUp) {
+      if (
+        !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+          credentialsSignUp.email
+        )
+      ) {
+        setDisable(false);
+        setModal({ active: true, type: "fail", message: "Invalid Email" });
+        return;
+      }
+    } else {
+      if (
+        !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+          credentialsLogIn.email
+        )
+      ) {
+        setDisable(false);
+        setModal({ active: true, type: "fail", message: "Invalid Email" });
+        return;
+      }
+    }
+
+    // Password Check
+    if (signUp) {
+      if (
+        !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+          credentialsSignUp.password
+        )
+      ) {
+        setDisable(false);
+        setModal({ active: true, type: "fail", message: "Invalid Password" });
+        return;
+      }
+    } else {
+      if (
+        !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+          credentialsLogIn.password
+        )
+      ) {
+        setDisable(false);
+        setModal({ active: true, type: "fail", message: "Invalid Password" });
+        return;
+      }
+    }
+
+    setDisable(false);
   }
 
   useEffect(() => {
@@ -48,12 +107,20 @@ export default function SignInForm({ setSignIn }: any): JSX.Element {
     };
   }, []);
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setModal({ active: false, type: "fail", message: "" });
+    }, 3000);
+    return () => clearTimeout(timeout);
+  }, [modal]);
+
   return (
     <section className="w-[100%] h-[100%] fixed top-0 left-0 flex justify-center items-center z-20 backdrop-brightness-50 animate-fade">
       <form
         className="border-2 border-black shadow-inner w-[95vw] md:w-[40vw] h-[80%] rounded-xl bg-gradient-to-br from-[#46458f] to-[#e9b2c08a] flex justify-center items-center relative"
-        onSubmit={(e) => logInSignUp(e)}
+        onSubmit={(e) => logInSignUp(e, credentialsLogIn, credentialsSignUp)}
       >
+        {modal.active && <Modal modal={modal} />}
         <div
           className="absolute text-pink-400 w-8 top-7 right-6 cursor-pointer hover:text-pink-500"
           onClick={() => {
@@ -116,15 +183,24 @@ export default function SignInForm({ setSignIn }: any): JSX.Element {
           </div>
 
           <button
-            className="mt-5 w-full md:w-3/4 h-8 text-white disabled:bg-blue-400 disabled:cursor-not-allowed hover:bg-blue-600 bg-blue-500 rounded-md font-medium focus:outline-none focus:border-violet-300 focus:border-2"
+            className="flex justify-center items-center mt-5 w-full md:w-3/4 h-8 text-white disabled:bg-blue-400 disabled:cursor-not-allowed hover:bg-blue-600 bg-blue-500 rounded-md font-medium focus:outline-none focus:border-violet-300 focus:border-2"
             disabled={
               disable ||
               Object.values(signUp ? credentialsSignUp : credentialsLogIn).some(
                 (item) => !item
               )
             }
+            onClick={(e: any) =>
+              logInSignUp(e, credentialsLogIn, credentialsSignUp)
+            }
           >
-            {signUp ? "Sign Up" : "Log In"}
+            {disable ? (
+              <div className="animate-spin w-5 h-5 rounded-full border-4 border-white border-t-violet-300"></div>
+            ) : signUp ? (
+              "Sign Up"
+            ) : (
+              "Log In"
+            )}
           </button>
           <div className="flex flex-row w-full md:w-3/4 mt-8 items-center">
             <div className="border-t-2 border-gray-400 w-2/4"></div>
@@ -132,7 +208,8 @@ export default function SignInForm({ setSignIn }: any): JSX.Element {
             <div className="border-t-2 border-gray-400 w-2/4"></div>
           </div>
           <button
-            className="flex flex-row w-full md:w-3/4 h-10 mt-8 items-center border-4 rounded-md bg-white focus:outline-none focus:border-violet-300"
+            className="flex flex-row w-full md:w-3/4 h-10 mt-8 items-center border-4 rounded-md bg-white focus:outline-none focus:border-violet-300 disabled:cursor-not-allowed"
+            disabled={disable}
             onClick={() => signIn("google")}
           >
             <FcGoogle className="m-4 scale-125" />
@@ -142,9 +219,12 @@ export default function SignInForm({ setSignIn }: any): JSX.Element {
             <p>
               {signUp ? "Have an account? " : "Don't have an account? "}
               <button
-                className="cursor-pointer text-blue-400 font-semibold"
+                className="cursor-pointer text-blue-400 font-semibold disabled:cursor-not-allowed"
+                disabled={disable}
+                type="button"
                 onClick={() => {
                   setSignUp((prev) => !prev);
+                  setDisable(false);
                   setCredentialsLogIn({ email: "", password: "" });
                   setCredentialsSignUp({
                     displayName: "",
