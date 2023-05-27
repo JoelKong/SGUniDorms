@@ -16,16 +16,19 @@ export default function ChangeNameForm({
     message: "",
   });
 
+  // Change Name
   async function changeName(e: any) {
     e.preventDefault();
     setLoading(true);
 
+    // Empty Field
     if (!displayName) {
       setModal({ active: true, type: "fail", message: "Invalid Fields" });
       setLoading(false);
       return;
     }
 
+    // POST to server
     const nameChange = await fetch("/api/changename", {
       method: "POST",
       headers: {
@@ -46,6 +49,7 @@ export default function ChangeNameForm({
     setLoading(false);
   }
 
+  // Turn off modal
   useEffect(() => {
     const timeout = setTimeout(() => {
       setModal({ active: false, type: "fail", message: "" });
