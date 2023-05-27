@@ -2,6 +2,7 @@ import { useState, useEffect, FormEvent } from "react";
 import { signIn } from "next-auth/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { FcGoogle } from "react-icons/fc";
+import { IoMdInformationCircle } from "react-icons/io";
 
 export default function SignInForm({ setSignIn }: any): JSX.Element {
   const [disable, setDisable] = useState<boolean>(false);
@@ -27,7 +28,7 @@ export default function SignInForm({ setSignIn }: any): JSX.Element {
     }
   }
 
-  function logInSignUp(e: FormEvent<HTMLFormElement>) {
+  async function logInSignUp(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
   }
 
@@ -70,34 +71,50 @@ export default function SignInForm({ setSignIn }: any): JSX.Element {
               placeholder="Display Name"
               autoFocus
               maxLength={20}
+              spellCheck={false}
               value={credentialsSignUp.displayName}
               name="displayName"
               onChange={(e) => handleChange(e)}
             ></input>
           )}
+
           <input
             className={`${
               signUp ? "mt-3" : "mt-10"
             } pl-2 pr-2 w-full md:w-3/4 h-9 rounded-md font-semibold focus:outline-none focus:border-violet-300 focus:border-4 border-4 tracking-wide`}
             placeholder="Email"
             name="email"
+            spellCheck={false}
             value={signUp ? credentialsSignUp.email : credentialsLogIn.email}
             onChange={(e) => handleChange(e)}
             autoFocus
           ></input>
-          <input
-            className="mt-3 pl-2 pr-2 w-full md:w-3/4 h-9 rounded-md font-semibold focus:outline-none focus:border-violet-300 focus:border-4 border-4 tracking-wide"
-            placeholder="Password"
-            type="password"
-            name="password"
-            value={
-              signUp ? credentialsSignUp.password : credentialsLogIn.password
-            }
-            onChange={(e) => handleChange(e)}
-          ></input>
+
+          <div className="relative mt-3 w-[calc(100%+3rem)] md:w-[calc(75%+3rem)] h-9 flex items-center justify-center">
+            <input
+              className="pl-2 pr-2 w-[calc(100%-3rem)] h-full rounded-md font-semibold focus:outline-none focus:border-violet-300 focus:border-4 border-4 tracking-wide"
+              placeholder="Password"
+              spellCheck={false}
+              type="password"
+              name="password"
+              value={
+                signUp ? credentialsSignUp.password : credentialsLogIn.password
+              }
+              onChange={(e) => handleChange(e)}
+            ></input>
+            <div className="absolute right-0">
+              <IoMdInformationCircle className="relative text-gray-400 scale-150" />
+            </div>
+          </div>
+
           <button
-            className="mt-5 w-full md:w-3/4 h-8 text-white disabled:bg-blue-300 hover:bg-blue-600 bg-blue-500 rounded-md font-medium focus:outline-none focus:border-violet-300 focus:border-2"
-            disabled={disable}
+            className="mt-5 w-full md:w-3/4 h-8 text-white disabled:bg-blue-400 disabled:cursor-not-allowed hover:bg-blue-600 bg-blue-500 rounded-md font-medium focus:outline-none focus:border-violet-300 focus:border-2"
+            disabled={
+              disable ||
+              Object.values(signUp ? credentialsSignUp : credentialsLogIn).some(
+                (item) => !item
+              )
+            }
           >
             {signUp ? "Sign Up" : "Log In"}
           </button>
