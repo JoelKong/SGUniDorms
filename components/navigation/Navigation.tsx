@@ -5,7 +5,7 @@ import SubNavigation from "../navigation/SubNavigation";
 import SlidingPane from "react-sliding-pane";
 import MobileNavContent from "./MobileNavContent";
 import Profile from "./Profile";
-import SignInForm from "../SignInForm";
+import SignInForm from "../signin/SignInForm";
 import ChangeNameForm from "./ChangeNameForm";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import { XMarkIcon } from "@heroicons/react/24/outline";

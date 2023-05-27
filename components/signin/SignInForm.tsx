@@ -1,4 +1,5 @@
 import { useState, useEffect, FormEvent } from "react";
+import PasswordPanel from "./PasswordPanel";
 import { signIn } from "next-auth/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { FcGoogle } from "react-icons/fc";
@@ -7,6 +8,7 @@ import { IoMdInformationCircle } from "react-icons/io";
 export default function SignInForm({ setSignIn }: any): JSX.Element {
   const [disable, setDisable] = useState<boolean>(false);
   const [signUp, setSignUp] = useState<boolean>(false);
+  const [passwordPanel, setPasswordPanel] = useState<boolean>(false);
   const [credentialsLogIn, setCredentialsLogIn] = useState<any>({
     email: "",
     password: "",
@@ -102,8 +104,14 @@ export default function SignInForm({ setSignIn }: any): JSX.Element {
               }
               onChange={(e) => handleChange(e)}
             ></input>
-            <div className="absolute right-0">
-              <IoMdInformationCircle className="relative text-gray-400 scale-150" />
+            <div className="absolute right-0 cursor-pointer flex items-center">
+              <IoMdInformationCircle
+                className="relative text-gray-400 scale-150"
+                onMouseOver={() => setPasswordPanel(true)}
+                onMouseOut={() => setPasswordPanel(false)}
+                onClick={() => setPasswordPanel(!passwordPanel)}
+              />
+              {passwordPanel && <PasswordPanel />}
             </div>
           </div>
 
