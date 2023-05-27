@@ -4,7 +4,9 @@ import Image from "next/image";
 import SubNavigation from "../navigation/SubNavigation";
 import SlidingPane from "react-sliding-pane";
 import MobileNavContent from "./MobileNavContent";
+import Profile from "./Profile";
 import SignInForm from "../SignInForm";
+import ChangeNameForm from "./ChangeNameForm";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
@@ -13,12 +15,11 @@ import {
   smuResidences,
 } from "../../utils/universities";
 import { useState } from "react";
-import { signOut } from "next-auth/react";
 
 export default function Navigation({ session }: any): JSX.Element {
   const [activeElement, setActiveElement] = useState<String | null>(null);
   const [signIn, setSignIn] = useState<boolean>(false);
-  const [profileDropDown, setProfileDropDown] = useState<boolean>(false);
+  const [changeName, setChangeName] = useState<boolean>(false);
   const [toggleState, setToggleState] = useState<any>({
     isPaneOpen: false,
   });
@@ -26,6 +27,7 @@ export default function Navigation({ session }: any): JSX.Element {
   return (
     <>
       {signIn && <SignInForm setSignIn={setSignIn} />}
+      {changeName && <ChangeNameForm setChangeName={setChangeName} />}
       <nav className="fixed top-0 left-0 w-full">
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 w-full">
@@ -52,7 +54,7 @@ export default function Navigation({ session }: any): JSX.Element {
                       onClick={() => setSignIn(true)}
                     >
                       <p className="flex items-center text">
-                        Sign In <FiLogIn className="ml-1 " />
+                        Log In <FiLogIn className="ml-1 " />
                       </p>
                     </button>
                   </div>
@@ -164,36 +166,7 @@ export default function Navigation({ session }: any): JSX.Element {
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   {session ? (
-                    <div className="flex w-24 justify-center relative">
-                      <button
-                        className="hover:opacity-80"
-                        onClick={() => setProfileDropDown(!profileDropDown)}
-                      >
-                        <Image
-                          src={session.profilepicture}
-                          alt="profile picture"
-                          width={50}
-                          height={50}
-                          className="rounded-full w-10 h-10"
-                        />
-                      </button>
-                      {profileDropDown && (
-                        <div className="flex items-center flex-col p-2 rounded-md w-32 h-32 absolute top-12 animate-fade bg-gradient-to-br from-[#46458f] to-[#c299a37c]">
-                          <span className="border-b w-full text-center pb-2 cursor-default font-semibold text-violet-300">
-                            {session.name}
-                          </span>
-                          <button className="border-b w-full text-center pb-2 pt-2 font-semibold text-blue-300">
-                            Change Name
-                          </button>
-                          <button
-                            className="flex items-center justify-center w-full pt-2 font-semibold text-blue-300"
-                            onClick={() => signOut()}
-                          >
-                            Log Out <FiLogIn className="ml-1 " />
-                          </button>
-                        </div>
-                      )}
-                    </div>
+                    <Profile session={session} setChangeName={setChangeName} />
                   ) : (
                     <button
                       className="text-white px-3 py-1.5 rounded-md text-md font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 w-24"
