@@ -49,14 +49,21 @@ export default function Navigation({ session }: any): JSX.Element {
               <div className="md:hidden flex justify-end sm:flex w-full h-9 text-white">
                 <div className="pr-3">
                   <div className="ml-10 flex items-baseline space-x-4">
-                    <button
-                      className="text-white px-3 py-1.5 rounded-md text-md font-medium w-24 bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500"
-                      onClick={() => setSignIn(true)}
-                    >
-                      <p className="flex items-center text">
-                        Log In <FiLogIn className="ml-1 " />
-                      </p>
-                    </button>
+                    {session ? (
+                      <Profile
+                        session={session}
+                        setChangeName={setChangeName}
+                      />
+                    ) : (
+                      <button
+                        className="text-white px-3 py-1.5 rounded-md text-md font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 w-24"
+                        onClick={() => setSignIn(true)}
+                      >
+                        <p className="flex items-center">
+                          Log In <FiLogIn className="ml-1 " />
+                        </p>
+                      </button>
+                    )}
                   </div>
                 </div>
                 <svg

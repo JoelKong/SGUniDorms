@@ -1,15 +1,29 @@
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import Modal from "./Modal";
+import { useState, useEffect } from "react";
 
 export default function ChangeNameForm({ setChangeName }: any): JSX.Element {
   const [displayName, setDisplayName] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const [modal, setModal] = useState({ active: false, message: "" });
 
   function changeName(e: any) {
     e.preventDefault();
-    console.log("hi");
     setLoading(true);
+
+    if (!displayName) {
+      setModal({ active: true, message: "Invalid Fields" });
+      setLoading(false);
+      return;
+    }
   }
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setModal({ active: false, message: "" });
+    }, 3000);
+    return () => clearTimeout(timeout);
+  }, [modal]);
 
   return (
     <section className="w-full h-full fixed top-0 left-0 flex justify-center items-center z-20 backdrop-brightness-50 animate-fade">
@@ -17,6 +31,7 @@ export default function ChangeNameForm({ setChangeName }: any): JSX.Element {
         className="border-2 border-black shadow-inner w-[95vw] md:w-[40vw] h-[30%] rounded-xl bg-gradient-to-br from-[#46458f] to-[#e9b2c08a] flex justify-center items-center relative"
         onSubmit={(e) => changeName(e)}
       >
+        {modal.active && <Modal modal={modal} />}
         <div
           className="absolute text-pink-400 w-8 top-7 right-6 cursor-pointer hover:text-pink-500"
           onClick={() => {
