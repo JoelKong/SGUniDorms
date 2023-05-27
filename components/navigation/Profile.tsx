@@ -21,7 +21,7 @@ export default function Profile({ session, setChangeName }: any): JSX.Element {
         />
       </button>
       {profileDropDown && (
-        <div className="flex items-center flex-col p-2 rounded-md w-32 h-32 absolute top-12 animate-fade bg-gradient-to-br from-[#46458f] to-[#c299a37c]">
+        <div className="flex items-center flex-col p-2 rounded-md w-32 min-w-fit h-32 absolute top-12 animate-fade bg-gradient-to-br from-[#46458f] to-[#c299a37c]">
           <span className="border-b w-full text-center pb-2 cursor-default font-semibold text-violet-300">
             {session.name}
           </span>

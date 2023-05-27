@@ -27,7 +27,9 @@ export default function Navigation({ session }: any): JSX.Element {
   return (
     <>
       {signIn && <SignInForm setSignIn={setSignIn} />}
-      {changeName && <ChangeNameForm setChangeName={setChangeName} />}
+      {changeName && (
+        <ChangeNameForm setChangeName={setChangeName} session={session} />
+      )}
       <nav className="fixed top-0 left-0 w-full">
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 w-full">
