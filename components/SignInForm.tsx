@@ -69,6 +69,7 @@ export default function SignInForm({ setSignIn }: any): JSX.Element {
               className="mt-10 pl-2 pr-2 w-full md:w-3/4 h-9 rounded-md font-semibold focus:outline-none focus:border-violet-300 focus:border-4 border-4 tracking-wide"
               placeholder="Display Name"
               autoFocus
+              maxLength={20}
               value={credentialsSignUp.displayName}
               name="displayName"
               onChange={(e) => handleChange(e)}
