@@ -2,13 +2,13 @@ import Image from "next/image";
 
 export default function Description(): JSX.Element {
   return (
-    <section className="flex justify-evenly items-center w-full h-[50vh] mt-24 flex-wrap">
-      <div className="flex flex-col w-[30%] h-full border-4 border-gray-700">
+    <section className="flex flex-col items-center lg:flex-row lg:justify-evenly lg:items-center w-full h-[50vh]">
+      <div className="flex flex-col w-full md:w-3/4 lg:w-[30%] h-full lg:border-4 lg-border-gray-700 md:mt-6">
         <div className="flex w-full justify-center items-center h-2/4">
           <Image src="/star.png" alt="star" width={100} height={100} />
         </div>
-        <div className="w-full flex flex-col">
-          <header className="text-gray-300 text-center font-bold text-xl">
+        <div className="w-full flex flex-col h-2/4 justify-start">
+          <header className="text-gray-300 text-center font-bold text-xl h-10">
             Rate your dormitory
           </header>
           <article className="text-white p-5 font-light text-md text-justify">
@@ -19,12 +19,12 @@ export default function Description(): JSX.Element {
         </div>
       </div>
 
-      <div className="flex flex-col w-[30%] h-full border-4 border-gray-700">
+      <div className="flex flex-col w-full md:w-3/4 lg:w-[30%] h-full lg:border-4 lg-border-gray-700 md:mt-6">
         <div className="flex w-full justify-center items-center h-2/4">
           <Image src="/review.png" alt="review" width={200} height={200} />
         </div>
-        <div className="w-full flex flex-col">
-          <header className="text-gray-300 text-center font-bold text-xl">
+        <div className="w-full flex flex-col h-2/4 justify-start">
+          <header className="text-gray-300 text-center font-bold text-xl h-10">
             Write an anonymous review
           </header>
           <article className="text-white p-5 font-light text-md text-justify">
@@ -34,12 +34,12 @@ export default function Description(): JSX.Element {
         </div>
       </div>
 
-      <div className="flex flex-col w-[30%] h-full border-4 border-gray-700">
+      <div className="flex flex-col w-full md:w-3/4 lg:w-[30%] h-full lg:border-4 lg-border-gray-700 md:mt-6">
         <div className="flex w-full justify-center items-center h-2/4">
           <Image src="/forum.png" alt="forum" width={150} height={150} />
         </div>
-        <div className="w-full flex flex-col">
-          <header className="text-gray-300 text-center font-bold text-xl">
+        <div className="w-full flex flex-col h-2/4 justify-start">
+          <header className="text-gray-300 text-center font-bold text-xl h-10">
             Discuss in real time
           </header>
           <article className="text-white p-5 font-light text-md text-justify">
