@@ -1,5 +1,6 @@
 import Navigation from "../../components/navigation/Navigation";
 import Image from "next/image";
+import Description from "../../components/Description";
 import Footer from "../../components/Footer";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
@@ -16,6 +17,7 @@ export default function Home({ session }: any) {
         />
       </div>
       <Navigation session={session} />
+      <Description />
       <Footer />
     </main>
   );
