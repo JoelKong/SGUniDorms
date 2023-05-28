@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Description(): JSX.Element {
   return (
-    <section className="flex flex-col items-center lg:flex-row lg:justify-evenly lg:items-center w-full h-[50vh]">
+    <section className="flex flex-col items-center lg:flex-row lg:justify-evenly lg:items-center w-full h-fit lg:h-[50vh] mt-5">
       <div className="flex flex-col w-full md:w-3/4 lg:w-[30%] h-full lg:border-4 lg-border-gray-700 md:mt-6 rounded-lg">
         <div className="flex w-full justify-center items-center h-2/4">
           <Image src="/star.png" alt="star" width={100} height={100} />

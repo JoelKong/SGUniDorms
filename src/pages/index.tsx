@@ -8,7 +8,7 @@ import { authOptions } from "./api/auth/[...nextauth]";
 
 export default function Home({ session }: any) {
   return (
-    <main className="h-screen w-screen">
+    <main className="min-h-screen w-screen relative">
       <div className=" bg-[#121212] md:block fixed top-0 left-0 h-screen w-screen -z-10 brightness-50 grayscale">
         <Image
           src="/background.png"
