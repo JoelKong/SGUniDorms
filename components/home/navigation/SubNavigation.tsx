@@ -12,7 +12,7 @@ export default function SubNavigation({
           {schoolResidences.map((residence: String) => {
             return (
               <a
-                href={`/${residence.replaceAll(" ", "").toLowerCase()}`}
+                href={`/${residence}`}
                 className="pl-5 text-md hover:font-semibold"
               >
                 {residence}

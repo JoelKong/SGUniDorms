@@ -6,10 +6,7 @@ export default function MobileSubNavigation({
       <div className="flex flex-wrap justify-evenly">
         {schoolResidences.map((residence: String): JSX.Element => {
           return (
-            <a
-              href={`/${residence.replaceAll(" ", "").toLowerCase()}`}
-              className="pl-5 h-8"
-            >
+            <a href={`/${residence}`} className="pl-5 h-8">
               {residence}
             </a>
           );

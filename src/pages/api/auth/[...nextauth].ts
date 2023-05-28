@@ -34,6 +34,7 @@ export const authOptions = {
             name: token.name,
             email: token.email,
             profilepicture: token.picture,
+            rated: [{}],
           });
           token.user = checkUserExists.data();
           return token;

@@ -5,7 +5,7 @@ import {
   nusResidences,
   ntuResidences,
   smuResidences,
-} from "../../utils/universities";
+} from "../../../utils/universities";
 
 export default function MobileNavContent(): JSX.Element {
   const [schoolToggle, setSchoolToggle] = useState<any>({

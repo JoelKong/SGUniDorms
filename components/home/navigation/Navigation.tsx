@@ -2,7 +2,7 @@ import styles from "@/styles/navigation.module.css";
 import { FiLogIn } from "react-icons/fi";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
-import SubNavigation from "../navigation/SubNavigation";
+import SubNavigation from "./SubNavigation";
 import SlidingPane from "react-sliding-pane";
 import MobileNavContent from "./MobileNavContent";
 import Profile from "./Profile";
@@ -13,7 +13,7 @@ import {
   nusResidences,
   ntuResidences,
   smuResidences,
-} from "../../utils/universities";
+} from "../../../utils/universities";
 import { useState } from "react";
 
 export default function Navigation({ session }: any): JSX.Element {

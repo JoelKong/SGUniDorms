@@ -2,7 +2,7 @@ import {
   nusResidences,
   ntuResidences,
   smuResidences,
-} from "../../utils/universities";
+} from "../../../utils/universities";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router";
 
@@ -14,17 +14,15 @@ export default function HallSelection(): JSX.Element {
       <select
         className="w-3/4 lg:w-1/4 rounded-lg h-10 pl-2"
         onChange={(e) => router.push(e.target.value)}
+        defaultValue="1"
       >
-        <option disabled selected hidden>
+        <option disabled value="1" hidden>
           Choose your school
         </option>
         <option disabled>NUS</option>
         {nusResidences.map((nus) => {
           return (
-            <option
-              key={uuidv4()}
-              value={`/${nus.replaceAll(" ", "").toLowerCase()}`}
-            >
+            <option key={uuidv4()} value={`/${nus}`}>
               {nus}
             </option>
           );
@@ -32,10 +30,7 @@ export default function HallSelection(): JSX.Element {
         <option disabled>NTU</option>
         {ntuResidences.map((ntu) => {
           return (
-            <option
-              key={uuidv4()}
-              value={`/${ntu.replaceAll(" ", "").toLowerCase()}`}
-            >
+            <option key={uuidv4()} value={`/${ntu}`}>
               {ntu}
             </option>
           );
@@ -43,10 +38,7 @@ export default function HallSelection(): JSX.Element {
         <option disabled>SMU</option>
         {smuResidences.map((smu) => {
           return (
-            <option
-              key={uuidv4()}
-              value={`/${smu.replaceAll(" ", "").toLowerCase()}`}
-            >
+            <option key={uuidv4()} value={`/${smu}`}>
               {smu}
             </option>
           );

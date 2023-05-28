@@ -1,10 +1,9 @@
-import Navigation from "../../components/home/navigation/Navigation";
+import Navigation from "../../../components/home/navigation/Navigation";
 import Image from "next/image";
-import Description from "../../components/home/Description";
-import HallSelection from "../../components/home/navigation/HallSelection";
-import Footer from "../../components/Footer";
+import Header from "../../../components/dorm/Header";
+import Footer from "../../../components/Footer";
 import { getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]";
+import { authOptions } from "../api/auth/[...nextauth]";
 
 export default function Home({ session }: any) {
   return (
@@ -18,8 +17,7 @@ export default function Home({ session }: any) {
         />
       </div>
       <Navigation session={session} />
-      <HallSelection />
-      <Description />
+      <Header />
       <Footer />
     </main>
   );
