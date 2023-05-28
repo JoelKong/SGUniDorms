@@ -1,6 +1,7 @@
 import Navigation from "../../components/navigation/Navigation";
 import Image from "next/image";
 import Description from "../../components/Description";
+import HallSelection from "../../components/navigation/HallSelection";
 import Footer from "../../components/Footer";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
@@ -17,6 +18,7 @@ export default function Home({ session }: any) {
         />
       </div>
       <Navigation session={session} />
+      <HallSelection />
       <Description />
       <Footer />
     </main>

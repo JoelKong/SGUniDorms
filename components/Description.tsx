@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Description(): JSX.Element {
   return (
     <section className="flex flex-col items-center lg:flex-row lg:justify-evenly lg:items-center w-full h-[50vh]">
-      <div className="flex flex-col w-full md:w-3/4 lg:w-[30%] h-full lg:border-4 lg-border-gray-700 md:mt-6">
+      <div className="flex flex-col w-full md:w-3/4 lg:w-[30%] h-full lg:border-4 lg-border-gray-700 md:mt-6 rounded-lg">
         <div className="flex w-full justify-center items-center h-2/4">
           <Image src="/star.png" alt="star" width={100} height={100} />
         </div>
@@ -19,7 +19,7 @@ export default function Description(): JSX.Element {
         </div>
       </div>
 
-      <div className="flex flex-col w-full md:w-3/4 lg:w-[30%] h-full lg:border-4 lg-border-gray-700 md:mt-6">
+      <div className="flex flex-col w-full md:w-3/4 lg:w-[30%] h-full lg:border-4 lg-border-gray-700 md:mt-6 rounded-lg">
         <div className="flex w-full justify-center items-center h-2/4">
           <Image src="/review.png" alt="review" width={200} height={200} />
         </div>
@@ -34,7 +34,7 @@ export default function Description(): JSX.Element {
         </div>
       </div>
 
-      <div className="flex flex-col w-full md:w-3/4 lg:w-[30%] h-full lg:border-4 lg-border-gray-700 md:mt-6">
+      <div className="flex flex-col w-full md:w-3/4 lg:w-[30%] h-full lg:border-4 lg-border-gray-700 md:mt-6 rounded-lg">
         <div className="flex w-full justify-center items-center h-2/4">
           <Image src="/forum.png" alt="forum" width={150} height={150} />
         </div>

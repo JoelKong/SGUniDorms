@@ -28,7 +28,7 @@ export default function Navigation({ session }: any): JSX.Element {
       {changeName && (
         <ChangeNameForm setChangeName={setChangeName} session={session} />
       )}
-      <div className="w-full h-24"></div>
+      <div className="w-full h-20"></div>
       <nav className="fixed top-0 left-0 w-full backdrop-brightness-50">
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 w-full">
