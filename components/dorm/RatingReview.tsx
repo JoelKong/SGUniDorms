@@ -2,21 +2,21 @@ import { FaStar } from "react-icons/fa";
 
 export default function RatingReview({ session }: any): JSX.Element {
   return (
-    <section className="flex w-full h-96 flex-col text-white lg:flex-row items-center">
-      <aside className="w-full flex-row justify-evenly pl-12 lg:w-[30vw] lg:flex-col border-2 flex flex-shrink-0 flex-grow-0 h-44 lg:h-96">
-        <div className="h-36 flex flex-col justify-around">
-          <span className="text-gray-300 font-bold tracking-wide text-2xl w-4/4 text-left">
+    <section className="flex w-full h-96 flex-col lg:flex-row text-white items-center -mt-6 lg:mt-2">
+      <aside className="w-full lg:w-2/4 items-center lg:items-start flex-col justify-evenly pl-12 flex h-96 mr-5">
+        <div className="h-fit lg:h-36 flex flex-row lg:flex-col justify-around flex-shrink-0">
+          <span className="text-gray-300 font-bold tracking-wide text-xl lg:text-2xl w-4/4 text-left">
             Overall Rating
           </span>
 
-          <div className="flex flex-row lg:items-center w-3/4">
+          <div className="flex flex-row w-3/4">
             <FaStar className="text-5xl text-yellow-500 mr-6" />
             <p className="font-semibold text-5xl">0</p>
           </div>
         </div>
 
-        <div className="h-4/4 lg:h-2/4 flex flex-col justify-around mt-[0.5rem]">
-          <span className="text-gray-300 font-bold tracking-wide text-2xl">
+        <div className="h-2/4 flex flex-col justify-around w-[14.7rem]">
+          <span className="text-gray-300 font-bold tracking-wide text-xl lg:text-2xl">
             Rating Specifics
           </span>
 
