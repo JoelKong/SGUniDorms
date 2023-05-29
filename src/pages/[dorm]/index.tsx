@@ -1,7 +1,7 @@
 import Navigation from "../../../components/home/navigation/Navigation";
 import Image from "next/image";
 import Header from "../../../components/dorm/Header";
-import RatingReview from "../../../components/dorm/RatingReview";
+import Rating from "../../../components/dorm/Rating";
 import Footer from "../../../components/Footer";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]";
@@ -19,8 +19,8 @@ export default function Home({ session }: any) {
       </div>
       <Navigation session={session} />
       <Header />
-      <RatingReview session={session} />
-      <Footer />
+      <Rating session={session} />
+      {/* <Footer /> */}
     </main>
   );
 }

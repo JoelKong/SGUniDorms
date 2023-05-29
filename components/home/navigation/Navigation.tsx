@@ -181,7 +181,7 @@ export default function Navigation({ session }: any): JSX.Element {
                       onClick={() => signIn("google")}
                     >
                       <p className="flex items-center">
-                        Log In <FiLogIn className="ml-1 " />
+                        Log In <FiLogIn className="ml-1 mt-[0.1rem]" />
                       </p>
                     </button>
                   )}

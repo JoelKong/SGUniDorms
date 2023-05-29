@@ -1,9 +1,10 @@
 import { FaStar } from "react-icons/fa";
+import Review from "./Review";
 
-export default function RatingReview({ session }: any): JSX.Element {
+export default function Rating({ session }: any): JSX.Element {
   return (
-    <section className="flex w-full h-96 flex-col lg:flex-row text-white items-center -mt-6 lg:mt-2">
-      <aside className="w-full lg:w-2/4 items-center lg:items-start flex-col justify-evenly pl-12 flex h-96 mr-5">
+    <section className="flex w-full h-96 flex-col lg:flex-row text-white -mt-6 lg:mt-2">
+      <aside className="w-[90vw] md:w-[95vw] lg:w-2/4 items-center lg:items-start flex-col justify-evenly pl-12 flex h-96 mr-5">
         <div className="h-fit lg:h-36 flex flex-row lg:flex-col justify-around flex-shrink-0">
           <span className="text-gray-300 font-bold tracking-wide text-xl lg:text-2xl w-4/4 text-left">
             Overall Rating
@@ -20,7 +21,7 @@ export default function RatingReview({ session }: any): JSX.Element {
             Rating Specifics
           </span>
 
-          <div className="flex flex-col justify-evenly w-4/4 h-3/5">
+          <div className="flex flex-col justify-evenly w-4/4 h-4/5">
             <div className="flex flex-row w-full">
               <span className="w-16">Room</span>
               {Array(5)
@@ -63,7 +64,7 @@ export default function RatingReview({ session }: any): JSX.Element {
           </div>
         </div>
       </aside>
-      <div className="w-3/4 bg-blue-400">hi</div>
+      <Review />
     </section>
   );
 }
