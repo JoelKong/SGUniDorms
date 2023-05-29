@@ -11,6 +11,7 @@ async function handler(req: any, res: any) {
 
     const { currentStarValue, review, hallId, userId } = req.body;
     const hallRef = doc(db, "dorms", hallId);
+    const userRef = doc(db, "users", userId);
 
     try {
       // Check in server if 100 characters
@@ -24,6 +25,15 @@ async function handler(req: any, res: any) {
         await updateDoc(hallRef, {
           ratings: arrayUnion({ userId: userId, rating: currentStarValue }),
           review: arrayUnion({ userId: userId, review: review }),
+        });
+
+        // Update User
+        await updateDoc(userRef, {
+          rated: arrayUnion({
+            dormId: hallId,
+            rating: currentStarValue,
+            review: review,
+          }),
         });
 
         res.status(200).json({
