@@ -3,12 +3,14 @@ import { BiEdit } from "react-icons/bi";
 import { MdOutlineForum } from "react-icons/md";
 import { useState } from "react";
 
-export default function Review(): JSX.Element {
+export default function Review({ session }: any): JSX.Element {
   const [reviewForm, setReviewForm] = useState<boolean>(false);
 
   return (
     <>
-      {reviewForm && <RateReviewForm setReviewForm={setReviewForm} />}
+      {reviewForm && (
+        <RateReviewForm setReviewForm={setReviewForm} session={session} />
+      )}
       <section className="border-2 w-full">
         <div className="flex justify-end pr-12 pt-5">
           <button

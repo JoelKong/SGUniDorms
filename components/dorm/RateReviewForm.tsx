@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import ReviewForm from "./ReviewForm";
 
-export default function RateReviewForm({ setReviewForm }: any) {
+export default function RateReviewForm({ setReviewForm, session }: any) {
   const stars = Array(5).fill(0);
   const router = useRouter();
   const [nextPage, setNextPage] = useState<boolean>(false);
@@ -39,7 +39,7 @@ export default function RateReviewForm({ setReviewForm }: any) {
     <section className="w-[100%] h-[100%] fixed top-0 left-0 flex justify-center items-center z-20 backdrop-blur-lg backdrop-brightness-50 animate-fade">
       <div className="border-2 border-black shadow-inner w-[95vw] md:w-[40vw] h-[80%] rounded-xl bg-gradient-to-br from-[#46458f] to-[#e9b2c08a] flex justify-center relative p-8">
         <div
-          className="absolute text-pink-400 w-8 top-8 right-6 cursor-pointer hover:text-pink-500"
+          className="absolute text-pink-400 w-8 top-8 right-2 md:right-6 cursor-pointer hover:text-pink-500"
           onClick={() => setReviewForm(false)}
         >
           <XMarkIcon />
@@ -48,6 +48,7 @@ export default function RateReviewForm({ setReviewForm }: any) {
           <ReviewForm
             setNextPage={setNextPage}
             currentStarValue={currentStarValue}
+            session={session}
           />
         )}
         <div
@@ -55,7 +56,7 @@ export default function RateReviewForm({ setReviewForm }: any) {
             nextPage && "hidden"
           } flex items-center flex-col flex-nowrap w-[100%] h-[90%]`}
         >
-          <header className="font-bold text-3xl tracking-wide drop-shadow-2xl">{`Rate ${router.query.dorm}`}</header>
+          <header className="font-bold text-xl md:text-2xl tracking-wide drop-shadow-2xl">{`Rate ${router.query.dorm}`}</header>
           <section className="flex flex-col justify-evenly h-full w-full">
             <div className="flex flex-row justify-around">
               <span className="text-xl text-blue-300 font-semibold">Room</span>
