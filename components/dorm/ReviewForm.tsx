@@ -44,8 +44,12 @@ export default function ReviewForm({
       }),
     });
 
+    // Set Modal, refresh page without affecting state
     const status = await submitReview.json();
+    setModal({ active: true, type: status.type, message: status.message });
+    await router.replace(router.asPath);
     setDisable(false);
+    return;
   }
 
   // Turn off modal

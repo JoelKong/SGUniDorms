@@ -44,7 +44,7 @@ export default function ChangeNameForm({
     setModal({ active: true, type: status.type, message: status.message });
     setDisplayName("");
 
-    router.replace(router.asPath);
+    await router.replace(router.asPath);
 
     setLoading(false);
   }
