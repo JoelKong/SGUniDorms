@@ -58,7 +58,7 @@ export default function ChangeNameForm({
   }, [modal]);
 
   return (
-    <section className="w-full h-full fixed top-0 left-0 flex justify-center items-center z-20 backdrop-brightness-50 animate-fade">
+    <section className="w-full backdrop-blur-lg h-full fixed top-0 left-0 flex justify-center items-center z-20 backdrop-brightness-50 animate-fade">
       <form
         className="border-2 border-black shadow-inner w-[95vw] md:w-[40vw] h-[30%] rounded-xl bg-gradient-to-br from-[#46458f] to-[#e9b2c08a] flex justify-center items-center relative"
         onSubmit={(e) => changeName(e)}
