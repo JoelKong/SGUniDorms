@@ -8,15 +8,13 @@ import {
   smuResidences,
 } from "../../../utils/universities";
 import db from "../../../utils/firebaseInit";
-import { redis } from "../../../utils/redis";
 import { doc, getDoc } from "firebase/firestore";
-import Footer from "../../../components/Footer";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]";
 
 export default function Home({ session, dormData }: any) {
   return (
-    <main className="min-h-screen w-screen relative">
+    <main className="min-h-screen w-screen">
       <div className=" bg-[#121212] md:block fixed top-0 left-0 h-screen w-screen -z-10 brightness-50 grayscale">
         <Image
           src="/background.png"
@@ -28,7 +26,6 @@ export default function Home({ session, dormData }: any) {
       <Navigation session={session} />
       <Header />
       <Rating session={session} dormData={dormData} />
-      {/* <Footer /> */}
     </main>
   );
 }

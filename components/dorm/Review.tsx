@@ -5,6 +5,7 @@ import { MdOutlineForum } from "react-icons/md";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
+import Footer from "../Footer";
 
 export default function Review({ session, dormData }: any): JSX.Element {
   const router = useRouter();
@@ -15,7 +16,6 @@ export default function Review({ session, dormData }: any): JSX.Element {
     max: 10,
   });
   const stars = Array(5).fill(0);
-  console.log(dormData.review);
 
   // Get difference between timestamp and current date
   function dateDifference(timestamp: any) {
@@ -65,10 +65,6 @@ export default function Review({ session, dormData }: any): JSX.Element {
     }
   }, [reviewForm]);
 
-  useEffect(() => {
-    router.replace(router.asPath);
-  }, []);
-
   return (
     <>
       {reviewForm && (
@@ -78,12 +74,12 @@ export default function Review({ session, dormData }: any): JSX.Element {
           ratingReview={ratingReview}
         />
       )}
-      <section className="w-[55vw]">
+      <section className="lg:w-[55vw] sm:w-[90vw] w-[100vw]">
         <div className="pt-5 font-semibold text-lg text-gray-400 tracking-wide flex justify-between items-center h-20">
-          <p>{`Browse ${dormData.review.length} reviews`}</p>
+          <p className="sm:text-xl text-sm sm:pl-0 pl-4">{`Browse ${dormData.review.length} reviews`}</p>
           <div>
             <button
-              className="text-white px-3 py-1.5 rounded-md text-md font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 h-fit"
+              className="text-white px-3 py-1.5 rounded-md sm:text-xl text-xs font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 h-fit"
               onClick={() => (session ? setReviewForm(true) : signIn("google"))}
             >
               <p className="flex items-center">
@@ -91,7 +87,7 @@ export default function Review({ session, dormData }: any): JSX.Element {
                 <BiEdit className="ml-2 mt-[0.1rem] scale-125" />
               </p>
             </button>
-            <button className="text-white px-3 py-1.5 ml-5 rounded-md text-md font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 h-fit">
+            <button className="text-white px-3 py-1.5 sm:mr-0 mr-2 ml-5 rounded-md sm:text-xl text-xs font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 h-fit">
               <p className="flex items-center">
                 Forum <MdOutlineForum className="ml-2 mt-[0.1rem] scale-110" />
               </p>
@@ -176,12 +172,12 @@ export default function Review({ session, dormData }: any): JSX.Element {
             );
           })}
         </article>
-        <div className="flex w-full justify-between items-center pb-12">
+        <div className="flex w-full justify-between items-center pb-12 lg:pl-0 pl-4 lg:pr-0 pr-4">
           <div>{`Showing ${
             maxReviews.current < maxReviews.max
               ? maxReviews.current
               : maxReviews.max
-          } of ${maxReviews.current}`}</div>
+          } of ${dormData.review.length}`}</div>
           {maxReviews.max < maxReviews.current && (
             <button
               className="text-white px-3 py-1.5 rounded-md text-md font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 w-32"
@@ -198,6 +194,7 @@ export default function Review({ session, dormData }: any): JSX.Element {
           )}
         </div>
       </section>
+      <Footer />
     </>
   );
 }
