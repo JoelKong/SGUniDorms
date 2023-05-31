@@ -70,17 +70,19 @@ async function handler(req: any, res: any) {
             room: room,
             culture: culture,
             facilities: facilities,
-            totalAvgStars:
-              Math.round(((room + culture + facilities) / 15) * 5 * 10) / 10,
+            totalAvgStars: (((room + culture + facilities) / 15) * 5 * 10) / 10,
           }),
           review: arrayUnion({
             userId: userId,
             review: review,
             timeStamp: Date.now(),
-            totalAvgStars:
-              Math.round(((room + culture + facilities) / 15) * 5 * 10) / 10,
+            totalAvgStars: (((room + culture + facilities) / 15) * 5 * 10) / 10,
+            room: room,
+            culture: culture,
+            facilities: facilities,
           }),
         });
+
         // Update User
         await updateDoc(userRef, {
           rated: arrayUnion({

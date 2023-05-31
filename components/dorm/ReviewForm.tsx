@@ -18,7 +18,7 @@ export default function ReviewForm({
     message: "",
   });
   const [disable, setDisable] = useState<boolean>(false);
-  const [review, setReview] = useState<string>(ratingReview.review);
+  const [review, setReview] = useState<string>(ratingReview?.review ?? "");
 
   // Submit rating and reviews
   async function submitRatingAndReview() {
@@ -53,6 +53,7 @@ export default function ReviewForm({
     setModal({ active: true, type: status.type, message: status.message });
     await router.replace(router.asPath);
     setDisable(false);
+    setReviewForm(false);
     return;
   }
 

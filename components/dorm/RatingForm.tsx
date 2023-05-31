@@ -9,14 +9,13 @@ export default function RatingForm({
   session,
   ratingReview,
 }: any) {
-  const { rating } = ratingReview;
   const stars = Array(5).fill(0);
   const router = useRouter();
   const [nextPage, setNextPage] = useState<boolean>(false);
   const [currentStarValue, setCurrentStarValue] = useState<any>({
-    room: rating.room,
-    culture: rating.culture,
-    facilities: rating.facilities,
+    room: ratingReview?.rating?.room ?? 1,
+    culture: ratingReview?.rating?.culture ?? 1,
+    facilities: ratingReview?.rating?.facilities ?? 1,
   });
   const [hoverStarValue, setHoverStarValue] = useState<any>({
     room: undefined,

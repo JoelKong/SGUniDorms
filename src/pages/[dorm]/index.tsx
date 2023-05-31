@@ -8,6 +8,7 @@ import {
   smuResidences,
 } from "../../../utils/universities";
 import db from "../../../utils/firebaseInit";
+import { redis } from "../../../utils/redis";
 import { doc, getDoc } from "firebase/firestore";
 import Footer from "../../../components/Footer";
 import { getServerSession } from "next-auth";
