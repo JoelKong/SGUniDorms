@@ -22,7 +22,6 @@ export const authOptions = {
 
   callbacks: {
     async jwt({ token }: any) {
-      console.log("g");
       try {
         const user = doc(db, "users", token.sub);
         const checkUserExists = await getDoc(user);

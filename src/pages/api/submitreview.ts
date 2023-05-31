@@ -1,5 +1,15 @@
 import db from "../../../utils/firebaseInit";
-import { doc, updateDoc, arrayUnion } from "firebase/firestore";
+import {
+  doc,
+  updateDoc,
+  arrayUnion,
+  query,
+  where,
+  collection,
+  getDoc,
+  limit,
+  arrayRemove,
+} from "firebase/firestore";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
 
@@ -9,7 +19,7 @@ async function handler(req: any, res: any) {
     const session = await getServerSession(req, res, authOptions);
     if (!session) res.redirect(307, "/");
 
-    const { currentStarValue, review, hallId, userId } = req.body;
+    const { currentStarValue, review, hallId, userId, ratingReview } = req.body;
     const { room, culture, facilities } = currentStarValue;
     const hallRef = doc(db, "dorms", hallId);
     const userRef = doc(db, "users", userId);
@@ -22,6 +32,37 @@ async function handler(req: any, res: any) {
           message: `${100 - review.length} more characters required`,
         });
       } else {
+        if (ratingReview) {
+          // Delete old array to replace with new review;
+          const dormRef: any = await getDoc(doc(db, "dorms", hallId));
+          const usersRef: any = await getDoc(doc(db, "users", userId));
+          const dataUser = usersRef.data().rated;
+          const dataRating = dormRef.data().ratings;
+          const dataReview = dormRef.data().review;
+          const existingUserRatedIndex = dataUser.findIndex(
+            (rated: any) => rated.dormId === hallId
+          );
+          const existingRatingIndex = dataRating.findIndex(
+            (rating: any) => rating.userId === userId
+          );
+          const existingReviewIndex = dataReview.findIndex(
+            (review: any) => review.userId === userId
+          );
+
+          if (existingUserRatedIndex !== -1) {
+            await updateDoc(userRef, {
+              rated: arrayRemove(dataUser[existingUserRatedIndex]),
+            });
+          }
+
+          if (existingRatingIndex !== -1) {
+            await updateDoc(hallRef, {
+              ratings: arrayRemove(dataRating[existingRatingIndex]),
+              review: arrayRemove(dataReview[existingReviewIndex]),
+            });
+          }
+        }
+
         // Update ratings and reviews
         await updateDoc(hallRef, {
           ratings: arrayUnion({
@@ -40,7 +81,6 @@ async function handler(req: any, res: any) {
               Math.round(((room + culture + facilities) / 15) * 5 * 10) / 10,
           }),
         });
-
         // Update User
         await updateDoc(userRef, {
           rated: arrayUnion({
@@ -49,7 +89,6 @@ async function handler(req: any, res: any) {
             review: review,
           }),
         });
-
         res.status(200).json({
           type: "success",
           message: "Review Posted!",
@@ -57,6 +96,7 @@ async function handler(req: any, res: any) {
         });
       }
     } catch (error) {
+      console.log(error);
       res.status(500).json({
         type: "fail",
         message: "Something went wrong. Please try again.",

@@ -59,12 +59,12 @@ export default function RatingForm({
         >
           <header className="relative w-full text-center font-bold text-lg md:text-2xl tracking-wide drop-shadow-2xl">
             <p className="text-center">{`Rate ${router.query.dorm}`}</p>
-            <div
+            <button
               className="text-pink-400 w-8 cursor-pointer hover:text-pink-500 absolute right-0 top-0"
               onClick={() => setReviewForm(false)}
             >
               <XMarkIcon />
-            </div>
+            </button>
           </header>
           <section className="flex flex-col justify-evenly h-full w-full">
             <div className="flex flex-row justify-around">

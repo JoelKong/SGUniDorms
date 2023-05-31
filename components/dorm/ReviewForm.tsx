@@ -44,6 +44,7 @@ export default function ReviewForm({
         review,
         hallId: router.query.dorm,
         userId: session.id,
+        ratingReview,
       }),
     });
 
@@ -69,18 +70,20 @@ export default function ReviewForm({
       <div className="flex items-center flex-col flex-nowrap w-[100%] h-[90%]">
         <header className="relative w-full text-center font-bold text-lg md:text-2xl tracking-wide drop-shadow-2xl">
           <p className="text-center"> {`Review ${router.query.dorm}`}</p>
-          <div
-            className="text-pink-400 w-8 cursor-pointer hover:text-pink-500 absolute right-0 top-0"
+          <button
+            className="text-pink-400 w-8 cursor-pointer hover:text-pink-500 absolute right-0 top-0 disabled:cursor-not-allowed"
+            disabled={disable}
             onClick={() => setReviewForm(false)}
           >
             <XMarkIcon />
-          </div>
-          <div
-            className="absolute top-2 cursor-pointer hover:text-pink-500"
+          </button>
+          <button
+            className="absolute top-2 left-0 cursor-pointer hover:text-pink-500 disabled:cursor-not-allowed"
+            disabled={disable}
             onClick={() => setNextPage(false)}
           >
             <IoChevronBackCircleSharp className="scale-150 text-xl" />
-          </div>
+          </button>
         </header>
         <section className="flex flex-col h-full w-full justify-evenly">
           <p className="tracking-wider text-lg text-left pl-1">{`Share the pros and cons as well as your detailed experience staying in ${router.query.dorm}.`}</p>
