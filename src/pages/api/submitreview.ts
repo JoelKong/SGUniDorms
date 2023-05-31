@@ -1,5 +1,10 @@
 import db from "../../../utils/firebaseInit";
-import { doc, updateDoc, arrayUnion } from "firebase/firestore";
+import {
+  doc,
+  updateDoc,
+  arrayUnion,
+  serverTimestamp,
+} from "firebase/firestore";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
 
@@ -10,6 +15,7 @@ async function handler(req: any, res: any) {
     if (!session) res.redirect(307, "/");
 
     const { currentStarValue, review, hallId, userId } = req.body;
+    const { room, culture, facilities } = currentStarValue;
     const hallRef = doc(db, "dorms", hallId);
     const userRef = doc(db, "users", userId);
 
@@ -23,15 +29,28 @@ async function handler(req: any, res: any) {
       } else {
         // Update ratings and reviews
         await updateDoc(hallRef, {
-          ratings: arrayUnion({ userId: userId, rating: currentStarValue }),
-          review: arrayUnion({ userId: userId, review: review }),
+          ratings: arrayUnion({
+            userId: userId,
+            room: room,
+            culture: culture,
+            facilities: facilities,
+            totalAvgStars:
+              Math.round(((room + culture + facilities) / 15) * 5 * 10) / 10,
+          }),
+          review: arrayUnion({
+            userId: userId,
+            review: review,
+            timeStamp: Date.now(),
+            totalAvgStars:
+              Math.round(((room + culture + facilities) / 15) * 5 * 10) / 10,
+          }),
         });
 
         // Update User
         await updateDoc(userRef, {
           rated: arrayUnion({
             dormId: hallId,
-            rating: currentStarValue,
+            rating: { room: room, culture: culture, facilities: facilities },
             review: review,
           }),
         });
