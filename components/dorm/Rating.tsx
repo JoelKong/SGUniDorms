@@ -1,5 +1,6 @@
 import { FaStar } from "react-icons/fa";
 import Review from "./Review";
+import { useEffect } from "react";
 
 export default function Rating({ session, dormData }: any): JSX.Element {
   const { overallRating, overallRoom, overallCulture, overallFacilities } =

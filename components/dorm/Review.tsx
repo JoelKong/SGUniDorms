@@ -10,8 +10,12 @@ export default function Review({ session, dormData }: any): JSX.Element {
   const router = useRouter();
   const [reviewForm, setReviewForm] = useState<boolean>(false);
   const [ratingReview, setRatingReview] = useState<any>(null);
+  const [maxReviews, setMaxReviews] = useState<any>({
+    current: dormData.review.length,
+    max: 10,
+  });
   const stars = Array(5).fill(0);
-  console.log(dormData);
+  console.log(dormData.review);
 
   // Get difference between timestamp and current date
   function dateDifference(timestamp: any) {
@@ -31,6 +35,7 @@ export default function Review({ session, dormData }: any): JSX.Element {
     const weeksDiff = Math.floor(timeDifference / week);
     const monthsDiff = Math.floor(timeDifference / month);
     const yearsDiff = Math.floor(timeDifference / year);
+    const secondsDiff = Math.floor(timeDifference / 1000);
 
     if (yearsDiff >= 2) {
       return `${yearsDiff} year ago`;
@@ -42,8 +47,10 @@ export default function Review({ session, dormData }: any): JSX.Element {
       return `${daysDiff} day ago`;
     } else if (hoursDiff >= 1) {
       return `${hoursDiff} hour ago`;
-    } else {
+    } else if (minutesDiff >= 1) {
       return `${minutesDiff} minute ago`;
+    } else {
+      return `${secondsDiff} second ago`;
     }
   }
 
@@ -58,6 +65,10 @@ export default function Review({ session, dormData }: any): JSX.Element {
     }
   }, [reviewForm]);
 
+  useEffect(() => {
+    router.replace(router.asPath);
+  }, []);
+
   return (
     <>
       {reviewForm && (
@@ -68,27 +79,30 @@ export default function Review({ session, dormData }: any): JSX.Element {
         />
       )}
       <section className="w-[55vw]">
-        <div className="pr-12 flex justify-end">
-          <button
-            className="text-white px-3 py-1.5 rounded-md text-md font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 w-46"
-            onClick={() => (session ? setReviewForm(true) : signIn("google"))}
-          >
-            <p className="flex items-center">
-              {ratingReview ? "Update Review" : "Rate and Review"}
-              <BiEdit className="ml-2 mt-[0.1rem] scale-125" />
-            </p>
-          </button>
-          <button className="text-white px-3 py-1.5 ml-5 rounded-md text-md font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 w-24">
-            <p className="flex items-center">
-              Forum <MdOutlineForum className="ml-2 mt-[0.1rem] scale-110" />
-            </p>
-          </button>
-        </div>
-        <div className="pt-5 font-semibold text-lg text-gray-400 tracking-wide">
-          <p>{`Browsing ${dormData.review.length} reviews`}</p>
+        <div className="pt-5 font-semibold text-lg text-gray-400 tracking-wide flex justify-between items-center h-20">
+          <p>{`Browse ${dormData.review.length} reviews`}</p>
+          <div>
+            <button
+              className="text-white px-3 py-1.5 rounded-md text-md font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 h-fit"
+              onClick={() => (session ? setReviewForm(true) : signIn("google"))}
+            >
+              <p className="flex items-center">
+                {ratingReview ? "Update Review" : "Rate and Review"}
+                <BiEdit className="ml-2 mt-[0.1rem] scale-125" />
+              </p>
+            </button>
+            <button className="text-white px-3 py-1.5 ml-5 rounded-md text-md font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 h-fit">
+              <p className="flex items-center">
+                Forum <MdOutlineForum className="ml-2 mt-[0.1rem] scale-110" />
+              </p>
+            </button>
+          </div>
         </div>
         <article className="flex flex-col w-full">
           {dormData.review.map((review: any, index: number) => {
+            if (index >= maxReviews.max) {
+              return;
+            }
             return (
               <div
                 key={index}
@@ -109,7 +123,9 @@ export default function Review({ session, dormData }: any): JSX.Element {
                   </div>
                 </div>
                 <div className="flex flex-col p-4 justify-around">
-                  <div className="pb-4">{dateDifference(review.timeStamp)}</div>
+                  <div className="pb-4 font-semibold">
+                    {dateDifference(review.timeStamp)}
+                  </div>
                   <div className="pb-6 break-all tracking-wide leading-6">
                     {review.review}
                   </div>
@@ -160,7 +176,27 @@ export default function Review({ session, dormData }: any): JSX.Element {
             );
           })}
         </article>
-        <div>Showing</div>
+        <div className="flex w-full justify-between items-center pb-12">
+          <div>{`Showing ${
+            maxReviews.current < maxReviews.max
+              ? maxReviews.current
+              : maxReviews.max
+          } of ${maxReviews.current}`}</div>
+          {maxReviews.max < maxReviews.current && (
+            <button
+              className="text-white px-3 py-1.5 rounded-md text-md font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 w-32"
+              onClick={() => {
+                if (maxReviews.max + 10 >= maxReviews.current) {
+                  setMaxReviews({ ...maxReviews, max: maxReviews.current });
+                } else {
+                  setMaxReviews({ ...maxReviews, max: maxReviews.max + 10 });
+                }
+              }}
+            >
+              Load More
+            </button>
+          )}
+        </div>
       </section>
     </>
   );

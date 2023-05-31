@@ -55,12 +55,12 @@ async function handler(req: any, res: any) {
             });
           }
 
-          if (existingRatingIndex !== -1) {
-            await updateDoc(hallRef, {
-              ratings: arrayRemove(dataRating[existingRatingIndex]),
-              review: arrayRemove(dataReview[existingReviewIndex]),
-            });
-          }
+          // if (existingRatingIndex !== -1) {
+          //   await updateDoc(hallRef, {
+          //     ratings: arrayRemove(dataRating[existingRatingIndex]),
+          //     review: arrayRemove(dataReview[existingReviewIndex]),
+          //   });
+          // }
         }
 
         // Update ratings and reviews
@@ -70,13 +70,15 @@ async function handler(req: any, res: any) {
             room: room,
             culture: culture,
             facilities: facilities,
-            totalAvgStars: (((room + culture + facilities) / 15) * 5 * 10) / 10,
+            totalAvgStars:
+              Math.round(((room + culture + facilities) / 15) * 5 * 10) / 10,
           }),
           review: arrayUnion({
             userId: userId,
             review: review,
             timeStamp: Date.now(),
-            totalAvgStars: (((room + culture + facilities) / 15) * 5 * 10) / 10,
+            totalAvgStars:
+              Math.round(((room + culture + facilities) / 15) * 5 * 10) / 10,
             room: room,
             culture: culture,
             facilities: facilities,
