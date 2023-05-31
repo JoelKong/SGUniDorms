@@ -1,10 +1,12 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { IoChevronBackCircleSharp } from "react-icons/io5";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import Modal from "../home/navigation/Modal";
 
 export default function ReviewForm({
   setNextPage,
+  setReviewForm,
   currentStarValue,
   session,
 }: any): JSX.Element {
@@ -63,14 +65,22 @@ export default function ReviewForm({
   return (
     <>
       {modal.active && <Modal modal={modal} />}
-      <div
-        className="absolute w-8 top-10 left-2 md:left-7 md:top-11 cursor-pointer hover:text-pink-500"
-        onClick={() => setNextPage(false)}
-      >
-        <IoChevronBackCircleSharp className="scale-150 text-xl" />
-      </div>
       <div className="flex items-center flex-col flex-nowrap w-[100%] h-[90%]">
-        <header className="font-bold text-2xl md:text-3xl tracking-wide drop-shadow-2xl">{`Review ${router.query.dorm}`}</header>
+        <header className="relative w-full text-center font-bold text-lg md:text-2xl tracking-wide drop-shadow-2xl">
+          <p className="text-center"> {`Review ${router.query.dorm}`}</p>
+          <div
+            className="text-pink-400 w-8 cursor-pointer hover:text-pink-500 absolute right-0 top-0"
+            onClick={() => setReviewForm(false)}
+          >
+            <XMarkIcon />
+          </div>
+          <div
+            className="absolute top-2 cursor-pointer hover:text-pink-500"
+            onClick={() => setNextPage(false)}
+          >
+            <IoChevronBackCircleSharp className="scale-150 text-xl" />
+          </div>
+        </header>
         <section className="flex flex-col h-full w-full justify-evenly">
           <p className="tracking-wider text-lg text-left pl-1">{`Share the pros and cons as well as your detailed experience staying in ${router.query.dorm}.`}</p>
           <textarea
@@ -83,11 +93,15 @@ export default function ReviewForm({
           ></textarea>
         </section>
         <button
-          className="w-3/4 h-10 tracking-wider text-white hover:bg-blue-600 bg-blue-500 rounded-md font-semibold focus:outline-none focus:border-violet-300 focus:border-2 disabled:bg-blue-300 disabled:cursor-not-allowed"
+          className="flex justify-center w-3/4 h-10 tracking-wider text-white hover:bg-blue-600 bg-blue-500 rounded-md font-semibold focus:outline-none focus:border-violet-300 focus:border-2 disabled:bg-blue-300 disabled:cursor-not-allowed"
           onClick={() => submitRatingAndReview()}
           disabled={disable}
         >
-          Submit
+          {disable ? (
+            <div className="animate-spin w-5 h-5 rounded-full border-4 border-white border-t-violet-300 self-center"></div>
+          ) : (
+            <p className="self-center">Submit</p>
+          )}
         </button>
       </div>
     </>

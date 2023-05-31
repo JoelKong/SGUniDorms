@@ -38,15 +38,10 @@ export default function RateReviewForm({ setReviewForm, session }: any) {
   return (
     <section className="w-[100%] h-[100%] fixed top-0 left-0 flex justify-center items-center z-20 backdrop-blur-lg backdrop-brightness-50 animate-fade">
       <div className="border-2 border-black shadow-inner w-[95vw] md:w-[40vw] h-[80%] rounded-xl bg-gradient-to-br from-[#46458f] to-[#e9b2c08a] flex justify-center relative p-8">
-        <div
-          className="absolute text-pink-400 w-8 top-8 right-2 md:right-6 cursor-pointer hover:text-pink-500"
-          onClick={() => setReviewForm(false)}
-        >
-          <XMarkIcon />
-        </div>
         {nextPage && (
           <ReviewForm
             setNextPage={setNextPage}
+            setReviewForm={setReviewForm}
             currentStarValue={currentStarValue}
             session={session}
           />
@@ -56,7 +51,15 @@ export default function RateReviewForm({ setReviewForm, session }: any) {
             nextPage && "hidden"
           } flex items-center flex-col flex-nowrap w-[100%] h-[90%]`}
         >
-          <header className="font-bold text-xl md:text-2xl tracking-wide drop-shadow-2xl">{`Rate ${router.query.dorm}`}</header>
+          <header className="relative w-full text-center font-bold text-lg md:text-2xl tracking-wide drop-shadow-2xl">
+            <p className="text-center">{`Rate ${router.query.dorm}`}</p>
+            <div
+              className="text-pink-400 w-8 cursor-pointer hover:text-pink-500 absolute right-0 top-0"
+              onClick={() => setReviewForm(false)}
+            >
+              <XMarkIcon />
+            </div>
+          </header>
           <section className="flex flex-col justify-evenly h-full w-full">
             <div className="flex flex-row justify-around">
               <span className="text-xl text-blue-300 font-semibold">Room</span>

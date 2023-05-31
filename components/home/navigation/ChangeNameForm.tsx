@@ -64,16 +64,16 @@ export default function ChangeNameForm({
         onSubmit={(e) => changeName(e)}
       >
         {modal.active && <Modal modal={modal} />}
-        <div
-          className="absolute text-pink-400 w-8 top-7 right-6 cursor-pointer hover:text-pink-500"
-          onClick={() => {
-            setChangeName(false);
-          }}
-        >
-          <XMarkIcon />
-        </div>
-        <div className="flex items-center flex-col flex-nowrap w-[80%] h-[75%] ">
-          <div className="font-bold text-3xl tracking-wide drop-shadow-2xl">
+        <div className="relative flex items-center flex-col flex-nowrap w-[80%] h-[75%] ">
+          <div
+            className="absolute text-pink-400 w-8 top-0 right-0 cursor-pointer hover:text-pink-500"
+            onClick={() => {
+              setChangeName(false);
+            }}
+          >
+            <XMarkIcon />
+          </div>
+          <div className="font-bold text-2xl tracking-wide drop-shadow-2xl text-white">
             Change Name
           </div>
           <input
