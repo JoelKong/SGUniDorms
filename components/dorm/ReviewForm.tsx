@@ -9,6 +9,7 @@ export default function ReviewForm({
   setReviewForm,
   currentStarValue,
   session,
+  ratingReview,
 }: any): JSX.Element {
   const router = useRouter();
   const [modal, setModal] = useState({
@@ -17,7 +18,7 @@ export default function ReviewForm({
     message: "",
   });
   const [disable, setDisable] = useState<boolean>(false);
-  const [review, setReview] = useState<string>("");
+  const [review, setReview] = useState<string>(ratingReview.review);
 
   // Submit rating and reviews
   async function submitRatingAndReview() {
@@ -85,6 +86,7 @@ export default function ReviewForm({
           <p className="tracking-wider text-lg text-left pl-1">{`Share the pros and cons as well as your detailed experience staying in ${router.query.dorm}.`}</p>
           <textarea
             onChange={(e) => setReview(e.target.value)}
+            value={review}
             autoFocus
             rows={8}
             disabled={disable}

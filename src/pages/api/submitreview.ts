@@ -1,10 +1,5 @@
 import db from "../../../utils/firebaseInit";
-import {
-  doc,
-  updateDoc,
-  arrayUnion,
-  serverTimestamp,
-} from "firebase/firestore";
+import { doc, updateDoc, arrayUnion } from "firebase/firestore";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
 

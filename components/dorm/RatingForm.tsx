@@ -4,14 +4,19 @@ import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import ReviewForm from "./ReviewForm";
 
-export default function RateReviewForm({ setReviewForm, session }: any) {
+export default function RatingForm({
+  setReviewForm,
+  session,
+  ratingReview,
+}: any) {
+  const { rating } = ratingReview;
   const stars = Array(5).fill(0);
   const router = useRouter();
   const [nextPage, setNextPage] = useState<boolean>(false);
   const [currentStarValue, setCurrentStarValue] = useState<any>({
-    room: 1,
-    culture: 1,
-    facilities: 1,
+    room: rating.room,
+    culture: rating.culture,
+    facilities: rating.facilities,
   });
   const [hoverStarValue, setHoverStarValue] = useState<any>({
     room: undefined,
@@ -44,6 +49,7 @@ export default function RateReviewForm({ setReviewForm, session }: any) {
             setReviewForm={setReviewForm}
             currentStarValue={currentStarValue}
             session={session}
+            ratingReview={ratingReview}
           />
         )}
         <div

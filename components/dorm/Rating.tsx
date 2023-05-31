@@ -1,7 +1,11 @@
 import { FaStar } from "react-icons/fa";
 import Review from "./Review";
 
-export default function Rating({ session }: any): JSX.Element {
+export default function Rating({ session, dormData }: any): JSX.Element {
+  const { overallRating, overallRoom, overallCulture, overallFacilities } =
+    dormData;
+  const stars = Array(5).fill(0);
+
   return (
     <section className="flex w-full h-screen flex-col lg:flex-row text-white -mt-6 lg:mt-2">
       <aside className="w-[90vw] md:w-[95vw] lg:w-2/4 items-center lg:items-start flex-col justify-evenly pl-12 flex h-96 mr-5">
@@ -12,7 +16,7 @@ export default function Rating({ session }: any): JSX.Element {
 
           <div className="flex flex-row w-3/4">
             <FaStar className="text-5xl text-yellow-500 mr-6" />
-            <p className="font-semibold text-5xl">0</p>
+            <p className="font-semibold text-5xl">{overallRating || 0}</p>
           </div>
         </div>
 
@@ -24,47 +28,44 @@ export default function Rating({ session }: any): JSX.Element {
           <div className="flex flex-col justify-evenly w-4/4 h-4/5">
             <div className="flex flex-row w-full">
               <span className="w-16">Room</span>
-              {Array(5)
-                .fill(0)
-                .map((index) => {
-                  return (
-                    <FaStar
-                      key={index}
-                      className="text-2xl text-gray-400 ml-2"
-                    />
-                  );
-                })}
+              {stars.map((_, index) => {
+                return (
+                  <FaStar
+                    key={index}
+                    className="text-2xl text-gray-400 ml-2"
+                    color={overallRoom > index ? "#FFBA5A" : "#a9a9a9"}
+                  />
+                );
+              })}
             </div>
             <div className="flex flex-row w-full">
               <span className="w-16">Culture</span>
-              {Array(5)
-                .fill(0)
-                .map((index) => {
-                  return (
-                    <FaStar
-                      key={index}
-                      className="text-2xl text-gray-400 ml-2"
-                    />
-                  );
-                })}
+              {stars.map((_, index) => {
+                return (
+                  <FaStar
+                    key={index}
+                    className="text-2xl text-gray-400 ml-2"
+                    color={overallCulture > index ? "#FFBA5A" : "#a9a9a9"}
+                  />
+                );
+              })}
             </div>
             <div className="flex flex-row w-full">
               <span className="w-16">Facilities</span>
-              {Array(5)
-                .fill(0)
-                .map((index) => {
-                  return (
-                    <FaStar
-                      key={index}
-                      className="text-2xl text-gray-400 ml-2"
-                    />
-                  );
-                })}
+              {stars.map((_, index) => {
+                return (
+                  <FaStar
+                    key={index}
+                    className="text-2xl text-gray-400 ml-2"
+                    color={overallFacilities > index ? "#FFBA5A" : "#a9a9a9"}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>
       </aside>
-      <Review session={session} />
+      <Review session={session} dormData={dormData} />
     </section>
   );
 }
