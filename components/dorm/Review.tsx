@@ -4,7 +4,8 @@ import { FaStar } from "react-icons/fa";
 import { MdOutlineForum } from "react-icons/md";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { getSession, signIn } from "next-auth/react";
+import { signIn } from "next-auth/react";
+import Forum from "./Forum";
 import dateDifference from "../../utils/datediff";
 import Footer from "../Footer";
 
@@ -12,6 +13,7 @@ export default function Review({ session, dormData }: any): JSX.Element {
   const router = useRouter();
   const [reviewForm, setReviewForm] = useState<boolean>(false);
   const [ratingReview, setRatingReview] = useState<any>(null);
+  const [forum, setForum] = useState<boolean>(false);
   const [maxReviews, setMaxReviews] = useState<any>({
     current: dormData.review.length,
     max: 10,
@@ -38,6 +40,9 @@ export default function Review({ session, dormData }: any): JSX.Element {
           ratingReview={ratingReview}
         />
       )}
+      {forum && (
+        <Forum session={session} dormData={dormData} setForum={setForum} />
+      )}
       <section className="lg:w-[55vw] sm:w-[90vw] w-[100vw]">
         <div className="pt-5 font-semibold text-lg text-gray-400 tracking-wide flex justify-between items-center h-20">
           <p className="sm:text-xl text-sm sm:pl-0 pl-4">{`Browse ${dormData.review.length} reviews`}</p>
@@ -51,7 +56,10 @@ export default function Review({ session, dormData }: any): JSX.Element {
                 <BiEdit className="ml-2 mt-[0.1rem] scale-125" />
               </p>
             </button>
-            <button className="text-white px-3 py-1.5 sm:mr-0 mr-2 ml-5 rounded-md sm:text-lg text-xs font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 h-fit">
+            <button
+              className="text-white px-3 py-1.5 sm:mr-0 mr-2 ml-5 rounded-md sm:text-lg text-xs font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 h-fit"
+              onClick={() => (session ? setForum(true) : signIn("google"))}
+            >
               <p className="flex items-center">
                 Forum <MdOutlineForum className="ml-2 mt-[0.1rem] scale-110" />
               </p>
