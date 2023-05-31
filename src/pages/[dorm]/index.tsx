@@ -2,6 +2,11 @@ import Navigation from "../../../components/home/navigation/Navigation";
 import Image from "next/image";
 import Header from "../../../components/dorm/Header";
 import Rating from "../../../components/dorm/Rating";
+import {
+  nusResidences,
+  ntuResidences,
+  smuResidences,
+} from "../../../utils/universities";
 import Footer from "../../../components/Footer";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]";
@@ -26,6 +31,18 @@ export default function Home({ session }: any) {
 }
 
 export async function getServerSideProps(context: any) {
+  // Check whether path is a valid dorm
+  const allDorms = nusResidences.concat(ntuResidences, smuResidences);
+  if (!allDorms.includes(context.params.dorm)) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  // Retrieve session
   const session = await getServerSession(context.req, context.res, authOptions);
   console.log(session);
   if (!session) {
