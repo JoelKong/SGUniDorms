@@ -1,4 +1,5 @@
 import styles from "@/styles/navigation.module.css";
+import Link from "next/link";
 import { FiLogIn } from "react-icons/fi";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
@@ -34,7 +35,7 @@ export default function Navigation({ session }: any): JSX.Element {
           <div className="flex items-center justify-between h-16 w-full">
             <div className="flex items-center justify-between w-full">
               <div className="flex-shrink-0">
-                <a href="/" className="text-white text-lg font-semibold">
+                <Link href="/" className="text-white text-lg font-semibold">
                   <div className="flex items-center">
                     <Image
                       src="/sgdorm.png"
@@ -44,7 +45,7 @@ export default function Navigation({ session }: any): JSX.Element {
                     />
                     <span className={styles.titleGradient}>SGUniDorms</span>
                   </div>
-                </a>
+                </Link>
               </div>
 
               <div className="md:hidden flex justify-end sm:flex w-full h-9 text-white">

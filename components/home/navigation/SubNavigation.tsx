@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function SubNavigation({
   schoolResidences,
   setActiveElement,
@@ -11,12 +13,12 @@ export default function SubNavigation({
         <div className="flex flex-wrap justify-evenly">
           {schoolResidences.map((residence: String) => {
             return (
-              <a
+              <Link
                 href={`/${residence}`}
                 className="pl-5 text-md hover:font-semibold"
               >
                 {residence}
-              </a>
+              </Link>
             );
           })}
         </div>

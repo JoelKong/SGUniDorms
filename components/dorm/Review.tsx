@@ -4,7 +4,8 @@ import { FaStar } from "react-icons/fa";
 import { MdOutlineForum } from "react-icons/md";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { signIn } from "next-auth/react";
+import { getSession, signIn } from "next-auth/react";
+import dateDifference from "../../utils/datediff";
 import Footer from "../Footer";
 
 export default function Review({ session, dormData }: any): JSX.Element {
@@ -16,43 +17,6 @@ export default function Review({ session, dormData }: any): JSX.Element {
     max: 10,
   });
   const stars = Array(5).fill(0);
-
-  // Get difference between timestamp and current date
-  function dateDifference(timestamp: any) {
-    const currentDate = Date.now();
-    const timeDifference = currentDate - timestamp;
-
-    const minute = 60 * 1000;
-    const hour = 60 * minute;
-    const day = 24 * hour;
-    const week = 7 * day;
-    const month = 30 * day;
-    const year = 365 * day;
-
-    const minutesDiff = Math.floor(timeDifference / minute);
-    const hoursDiff = Math.floor(timeDifference / hour);
-    const daysDiff = Math.floor(timeDifference / day);
-    const weeksDiff = Math.floor(timeDifference / week);
-    const monthsDiff = Math.floor(timeDifference / month);
-    const yearsDiff = Math.floor(timeDifference / year);
-    const secondsDiff = Math.floor(timeDifference / 1000);
-
-    if (yearsDiff >= 2) {
-      return `${yearsDiff} year ago`;
-    } else if (monthsDiff >= 1) {
-      return `${monthsDiff} month ago`;
-    } else if (weeksDiff >= 1) {
-      return `${weeksDiff} week ago`;
-    } else if (daysDiff >= 1) {
-      return `${daysDiff} day ago`;
-    } else if (hoursDiff >= 1) {
-      return `${hoursDiff} hour ago`;
-    } else if (minutesDiff >= 1) {
-      return `${minutesDiff} minute ago`;
-    } else {
-      return `${secondsDiff} second ago`;
-    }
-  }
 
   useEffect(() => {
     if (session) {
@@ -79,7 +43,7 @@ export default function Review({ session, dormData }: any): JSX.Element {
           <p className="sm:text-xl text-sm sm:pl-0 pl-4">{`Browse ${dormData.review.length} reviews`}</p>
           <div>
             <button
-              className="text-white px-3 py-1.5 rounded-md sm:text-xl text-xs font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 h-fit"
+              className="text-white px-3 py-1.5 rounded-md sm:text-lg text-xs font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 h-fit"
               onClick={() => (session ? setReviewForm(true) : signIn("google"))}
             >
               <p className="flex items-center">
@@ -87,7 +51,7 @@ export default function Review({ session, dormData }: any): JSX.Element {
                 <BiEdit className="ml-2 mt-[0.1rem] scale-125" />
               </p>
             </button>
-            <button className="text-white px-3 py-1.5 sm:mr-0 mr-2 ml-5 rounded-md sm:text-xl text-xs font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 h-fit">
+            <button className="text-white px-3 py-1.5 sm:mr-0 mr-2 ml-5 rounded-md sm:text-lg text-xs font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 h-fit">
               <p className="flex items-center">
                 Forum <MdOutlineForum className="ml-2 mt-[0.1rem] scale-110" />
               </p>

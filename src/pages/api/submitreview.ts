@@ -3,11 +3,7 @@ import {
   doc,
   updateDoc,
   arrayUnion,
-  query,
-  where,
-  collection,
   getDoc,
-  limit,
   arrayRemove,
 } from "firebase/firestore";
 import { getServerSession } from "next-auth";
@@ -55,12 +51,12 @@ async function handler(req: any, res: any) {
             });
           }
 
-          // if (existingRatingIndex !== -1) {
-          //   await updateDoc(hallRef, {
-          //     ratings: arrayRemove(dataRating[existingRatingIndex]),
-          //     review: arrayRemove(dataReview[existingReviewIndex]),
-          //   });
-          // }
+          if (existingRatingIndex !== -1) {
+            await updateDoc(hallRef, {
+              ratings: arrayRemove(dataRating[existingRatingIndex]),
+              review: arrayRemove(dataReview[existingReviewIndex]),
+            });
+          }
         }
 
         // Update ratings and reviews

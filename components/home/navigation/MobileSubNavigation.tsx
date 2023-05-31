@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function MobileSubNavigation({
   schoolResidences,
 }: any): JSX.Element {
@@ -6,9 +8,9 @@ export default function MobileSubNavigation({
       <div className="flex flex-wrap justify-evenly">
         {schoolResidences.map((residence: String): JSX.Element => {
           return (
-            <a href={`/${residence}`} className="pl-5 h-8">
+            <Link href={`/${residence}`} className="pl-5 h-8">
               {residence}
-            </a>
+            </Link>
           );
         })}
       </div>

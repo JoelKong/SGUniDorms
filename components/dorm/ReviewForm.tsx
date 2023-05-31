@@ -94,6 +94,7 @@ export default function ReviewForm({
             autoFocus
             rows={8}
             disabled={disable}
+            maxLength={400}
             placeholder="Write a detailed and helpful comment that is at least 100 characters"
             className="w-full border border-gray-400 shadow rounded-xl placeholder-gray-400 p-4 text-black tracking-wide disabled:bg-gray-300 disabled:cursor-not-allowed"
           ></textarea>
