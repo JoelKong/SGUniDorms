@@ -5,6 +5,7 @@ import HallSelection from "../../components/home/navigation/HallSelection";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
 import Head from "next/head";
+import Footer from "../../components/Footer";
 
 export default function Home({ session }: any) {
   return (
@@ -66,6 +67,7 @@ export default function Home({ session }: any) {
         <Navigation session={session} />
         <HallSelection />
         <Description />
+        <Footer />
       </main>
     </>
   );

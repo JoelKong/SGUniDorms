@@ -156,12 +156,20 @@ export default function Review({ session, dormData }: any): JSX.Element {
             })
             .reverse()}
         </article>
-        <div className="flex w-full justify-between items-center pb-8 md:pb-24 lg:pl-0 pl-4 lg:pr-0 pr-4">
-          <div>{`Showing ${
-            dormData.review.length < maxReviews.max
-              ? dormData.review.length
-              : maxReviews.max
-          } of ${dormData.review.length}`}</div>
+        <div
+          className={`flex w-full justify-between items-center pb-8 ${
+            !dormData.review.length && "pb-28"
+          } md:pb-24 lg:pl-0 pl-4 lg:pr-0 pr-4`}
+        >
+          {!dormData.review.length ? (
+            "No reviews yet"
+          ) : (
+            <div>{`Showing ${
+              dormData.review.length < maxReviews.max
+                ? dormData.review.length
+                : maxReviews.max
+            } of ${dormData.review.length}`}</div>
+          )}
           {maxReviews.max < dormData.review.length && (
             <button
               className="text-white px-3 py-1.5 rounded-md text-md font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 w-32"

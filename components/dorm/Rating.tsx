@@ -7,7 +7,11 @@ export default function Rating({ session, dormData }: any): JSX.Element {
   const stars = Array(5).fill(0);
 
   return (
-    <section className="lg:items-start items-center flex w-full h-screen flex-col lg:flex-row text-white -mt-6 lg:mt-2">
+    <section
+      className={`lg:items-start items-center flex w-full ${
+        dormData.review.length && "h-screen"
+      } flex-col lg:flex-row text-white -mt-6 lg:mt-2`}
+    >
       <aside className="w-[90vw] md:w-[95vw] lg:w-[40vw] items-center lg:items-start flex-col justify-evenly pl-12 flex h-96 mr-5">
         <div className="h-fit lg:h-36 flex flex-row lg:flex-col justify-around flex-shrink-0">
           <span className="text-gray-300 font-bold tracking-wide text-xl lg:text-2xl w-4/4 text-left">
