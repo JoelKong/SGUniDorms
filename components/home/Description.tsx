@@ -8,10 +8,10 @@ export default function Description(): JSX.Element {
           <Image src="/star.png" alt="star" width={100} height={100} />
         </div>
         <div className="w-full flex flex-col h-2/4 justify-start">
-          <header className="text-gray-300 text-center font-bold text-xl h-10">
+          <header className="text-gray-300 text-center font-bold text-xl h-10 mt-4 md:mt-0">
             Rate your dormitory
           </header>
-          <article className="text-white p-5 font-light text-md text-justify">
+          <article className="text-white p-5 font-light text-sm md:text-md text-justify">
             We know that choosing the right dorm matters to get the best out of
             your university life. Check out ratings and reviews given by other
             people and make your decision from there!
@@ -27,7 +27,7 @@ export default function Description(): JSX.Element {
           <header className="text-gray-300 text-center font-bold text-xl h-10">
             Write an anonymous review
           </header>
-          <article className="text-white p-5 font-light text-md text-justify">
+          <article className="text-white p-5 font-light text-sm md:text-md text-justify">
             Share your detailed experience at your university dorm by writing a
             review. Your reviews are completely anonymous.
           </article>
@@ -39,10 +39,10 @@ export default function Description(): JSX.Element {
           <Image src="/forum.png" alt="forum" width={150} height={150} />
         </div>
         <div className="w-full flex flex-col h-2/4 justify-start">
-          <header className="text-gray-300 text-center font-bold text-xl h-10">
+          <header className="text-gray-300 text-center font-bold text-xl h-10 mt-4 md:mt-0">
             Discuss in real time
           </header>
-          <article className="text-white p-5 font-light text-md text-justify">
+          <article className="text-white p-5 font-light text-sm md:text-md text-justify">
             Discuss about dorm culture with others in real time through our chat
             feature! After all, every single detail matters in choosing the most
             suitable dorm for you.
