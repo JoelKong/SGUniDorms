@@ -51,7 +51,7 @@ export default function Review({ session, dormData }: any): JSX.Element {
           <p className="sm:text-xl text-sm sm:pl-0 pl-4">{`Browse ${dormData.review.length} reviews`}</p>
           <div>
             <button
-              className="text-white px-3 py-1.5 rounded-md sm:text-lg text-xs font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 h-fit"
+              className="text-white px-2 py-1.5 rounded-md sm:text-lg text-xs font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 h-fit"
               onClick={() => (session ? setReviewForm(true) : signIn("google"))}
             >
               <p className="flex items-center">
@@ -60,7 +60,7 @@ export default function Review({ session, dormData }: any): JSX.Element {
               </p>
             </button>
             <button
-              className="text-white px-4 py-1.5 sm:mr-0 mr-2 ml-5 rounded-md sm:text-lg text-xs font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 h-fit"
+              className="text-white px-2 py-1.5 sm:mr-0 mr-2 ml-5 rounded-md sm:text-lg text-xs font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 h-fit"
               onClick={() => (session ? setForum(true) : signIn("google"))}
             >
               <p className="flex items-center">
