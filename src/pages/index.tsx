@@ -29,10 +29,10 @@ export default function Home({ session }: any) {
         <meta property="og:url" content="https://www.sgunidorms.com/" />
         <meta property="og:type" content="website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* <meta
+        <meta
           name="google-site-verification"
-          content="UPJHz6_aiE3YlBWNBUEGqpaUbeuYE0tWXCde-_zmM0o"
-        /> */}
+          content="Dz7DaB9lsB-V3KxXX6Lg788ruE21WXcWuQ4ST2tYJR0"
+        />
         <link rel="icon" href="/favicon.ico"></link>
         <link
           rel="apple-touch-icon"
