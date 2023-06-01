@@ -101,7 +101,7 @@ export default function Review({ session, dormData }: any): JSX.Element {
                     >
                       {dateDifference(review.timeStamp)}
                     </div>
-                    <div className="pb-6 break-all tracking-wide leading-6">
+                    <div className="pb-6 break-all tracking-wide leading-6 pr-4">
                       {review.review}
                     </div>
                     <div className="flex flex-col justify-evenly w-4/4 h-4/5">
@@ -111,7 +111,7 @@ export default function Review({ session, dormData }: any): JSX.Element {
                           return (
                             <FaStar
                               key={index}
-                              className="text-2xl text-gray-400 ml-2 mb-4"
+                              className="text-xl md:text-2xl text-gray-400 ml-2 mb-4"
                               color={
                                 review.room > index ? "#FFBA5A" : "#a9a9a9"
                               }
@@ -125,7 +125,7 @@ export default function Review({ session, dormData }: any): JSX.Element {
                           return (
                             <FaStar
                               key={index}
-                              className="text-2xl text-gray-400 ml-2 mb-4"
+                              className="text-xl md:text-2xl text-gray-400 ml-2 mb-4"
                               color={
                                 review.culture > index ? "#FFBA5A" : "#a9a9a9"
                               }
@@ -139,7 +139,7 @@ export default function Review({ session, dormData }: any): JSX.Element {
                           return (
                             <FaStar
                               key={index}
-                              className="text-2xl text-gray-400 ml-2 mb-4"
+                              className="text-xl md:text-2xl text-gray-400 ml-2 mb-4"
                               color={
                                 review.facilities > index
                                   ? "#FFBA5A"

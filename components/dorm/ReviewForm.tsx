@@ -68,7 +68,7 @@ export default function ReviewForm({
   return (
     <>
       {modal.active && <Modal modal={modal} />}
-      <div className="flex items-center flex-col flex-nowrap w-[100%] h-[90%]">
+      <div className="flex items-center flex-col flex-nowrap w-[100%] md:h-[90%] h-full">
         <header className="relative w-full text-center font-bold text-2xl tracking-wide drop-shadow-2xl">
           <p className="text-center">Give a review</p>
           <button
