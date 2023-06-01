@@ -4,7 +4,7 @@ export default function MobileSubNavigation({
   schoolResidences,
 }: any): JSX.Element {
   return (
-    <nav className=" text-violet-700 h-fit font-bold animate-fade ">
+    <nav className=" text-violet-700 h-fit font-bold animate-fade">
       <div className="flex flex-wrap justify-evenly">
         {schoolResidences.map((residence: String): JSX.Element => {
           return (

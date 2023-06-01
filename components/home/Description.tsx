@@ -13,8 +13,8 @@ export default function Description(): JSX.Element {
           </header>
           <article className="text-white p-5 font-light text-md text-justify">
             We know that choosing the right dorm matters to get the best out of
-            your hall life. Check out ratings and reviews given by other people
-            and make your decision from there!
+            your university life. Check out ratings and reviews given by other
+            people and make your decision from there!
           </article>
         </div>
       </div>
@@ -43,8 +43,8 @@ export default function Description(): JSX.Element {
             Discuss in real time
           </header>
           <article className="text-white p-5 font-light text-md text-justify">
-            Discuss about hall culture with others in real time through our
-            forum! After all, every single detail matters in choosing the most
+            Discuss about dorm culture with others in real time through our chat
+            feature! After all, every single detail matters in choosing the most
             suitable dorm for you.
           </article>
         </div>

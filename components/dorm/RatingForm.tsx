@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
@@ -10,7 +9,6 @@ export default function RatingForm({
   ratingReview,
 }: any) {
   const stars = Array(5).fill(0);
-  const router = useRouter();
   const [nextPage, setNextPage] = useState<boolean>(false);
   const [currentStarValue, setCurrentStarValue] = useState<any>({
     room: ratingReview?.rating?.room ?? 1,
@@ -40,7 +38,7 @@ export default function RatingForm({
   }
 
   return (
-    <section className="w-[100%] h-[100%] fixed top-0 left-0 flex justify-center items-center z-20 backdrop-blur-lg backdrop-brightness-50 animate-fade">
+    <section className="w-[100%] h-[100%] fixed top-0 left-0 flex justify-center items-center z-50 backdrop-blur-lg backdrop-brightness-50 animate-fade">
       <div className="border-2 border-black shadow-inner w-[95vw] md:w-[40vw] h-[80%] rounded-xl bg-gradient-to-br from-[#46458f] to-[#e9b2c08a] flex justify-center relative p-8">
         {nextPage && (
           <ReviewForm
@@ -56,8 +54,8 @@ export default function RatingForm({
             nextPage && "hidden"
           } flex items-center flex-col flex-nowrap w-[100%] h-[90%]`}
         >
-          <header className="relative w-full text-center font-bold text-lg md:text-2xl tracking-wide drop-shadow-2xl">
-            <p className="text-center">{`Rate ${router.query.dorm}`}</p>
+          <header className="relative w-full text-center font-bold text-2xl tracking-wide drop-shadow-2xl">
+            <p className="text-center">Give a rating</p>
             <button
               className="text-pink-400 w-8 cursor-pointer hover:text-pink-500 absolute right-0 top-0"
               onClick={() => setReviewForm(false)}
