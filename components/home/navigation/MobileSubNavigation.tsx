@@ -6,9 +6,9 @@ export default function MobileSubNavigation({
   return (
     <nav className=" text-violet-700 h-fit font-bold animate-fade">
       <div className="flex flex-wrap justify-evenly">
-        {schoolResidences.map((residence: String): JSX.Element => {
+        {schoolResidences.map((residence: String, index: any): JSX.Element => {
           return (
-            <Link href={`/${residence}`} className="pl-5 h-8">
+            <Link key={index} href={`/${residence}`} className="pl-5 h-8">
               {residence}
             </Link>
           );
