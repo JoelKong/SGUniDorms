@@ -7,7 +7,7 @@ import {
   smuResidences,
 } from "../../../utils/universities";
 
-export default function MobileNavContent(): JSX.Element {
+export default function MobileNavContent({ setToggleState }: any): JSX.Element {
   const [schoolToggle, setSchoolToggle] = useState<any>({
     nus: false,
     ntu: false,
@@ -30,7 +30,10 @@ export default function MobileNavContent(): JSX.Element {
           NUS <MdOutlineArrowDropDown className="text-2xl" />
         </p>
         {schoolToggle.nus && (
-          <MobileSubNavigation schoolResidences={nusResidences} />
+          <MobileSubNavigation
+            schoolResidences={nusResidences}
+            setToggleState={setToggleState}
+          />
         )}
         <hr className="pb-10"></hr>
 
@@ -47,7 +50,10 @@ export default function MobileNavContent(): JSX.Element {
           NTU <MdOutlineArrowDropDown className="text-2xl" />
         </p>
         {schoolToggle.ntu && (
-          <MobileSubNavigation schoolResidences={ntuResidences} />
+          <MobileSubNavigation
+            schoolResidences={ntuResidences}
+            setToggleState={setToggleState}
+          />
         )}
         <hr className="pb-10"></hr>
 
@@ -64,7 +70,10 @@ export default function MobileNavContent(): JSX.Element {
           SMU <MdOutlineArrowDropDown className="text-2xl" />
         </p>
         {schoolToggle.smu && (
-          <MobileSubNavigation schoolResidences={smuResidences} />
+          <MobileSubNavigation
+            schoolResidences={smuResidences}
+            setToggleState={setToggleState}
+          />
         )}
         <hr className="pb-10"></hr>
       </div>

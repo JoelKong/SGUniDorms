@@ -96,7 +96,7 @@ export default function Navigation({ session }: any): JSX.Element {
                     setToggleState({ isPaneOpen: false });
                   }}
                 >
-                  <MobileNavContent />
+                  <MobileNavContent setToggleState={setToggleState} />
                 </SlidingPane>
               </div>
 
