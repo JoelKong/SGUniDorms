@@ -87,7 +87,7 @@ export default function ReviewForm({
           </button>
         </header>
         <section className="flex flex-col h-full w-full justify-evenly">
-          <p className="tracking-wider text-lg text-left pl-1">{`Share the pros and cons as well as your detailed experience staying in ${router.query.dorm}.`}</p>
+          <p className="tracking-wider text-lg text-left pl-1 md:mt-0 mt-4">{`Share the pros and cons as well as your detailed experience staying in ${router.query.dorm}.`}</p>
           <textarea
             onChange={(e) => setReview(e.target.value)}
             value={review}
@@ -100,7 +100,7 @@ export default function ReviewForm({
           ></textarea>
         </section>
         <button
-          className="flex justify-center w-3/4 h-10 tracking-wider text-white hover:bg-blue-600 bg-blue-500 rounded-md font-semibold focus:outline-none focus:border-violet-300 focus:border-2 disabled:bg-blue-300 disabled:cursor-not-allowed"
+          className="flex justify-center w-3/4 h-10 md:mt-0 mt-4 tracking-wider text-white hover:bg-blue-600 bg-blue-500 rounded-md font-semibold focus:outline-none focus:border-violet-300 focus:border-2 disabled:bg-blue-300 disabled:cursor-not-allowed"
           onClick={() => submitRatingAndReview()}
           disabled={disable}
         >
