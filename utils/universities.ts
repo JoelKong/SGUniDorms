@@ -9,6 +9,8 @@ export const nusResidences: String[] = [
   "RC4",
   "Ridge View RC",
   "Tembusu College",
+  "Cinnamon Wing",
+  "West Wing",
 ];
 
 export const ntuResidences: String[] = [
