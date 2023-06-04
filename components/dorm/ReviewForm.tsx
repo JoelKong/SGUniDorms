@@ -98,7 +98,7 @@ export default function ReviewForm({
             disabled={disable}
             maxLength={1000}
             placeholder="Write a detailed and helpful comment that is at least 100 characters"
-            className="w-full mt-10 border border-gray-400 shadow rounded-xl placeholder-gray-400 p-4 text-black tracking-wide disabled:bg-gray-300 disabled:cursor-not-allowed"
+            className="w-full mt-8 border border-gray-400 shadow rounded-xl placeholder-gray-400 p-4 text-black tracking-wide disabled:bg-gray-300 disabled:cursor-not-allowed"
           ></textarea>
           <button
             className="flex justify-center w-3/4 h-10 md:mt-0 mt-4 tracking-wider text-white hover:bg-blue-600 bg-blue-500 rounded-md font-semibold focus:outline-none focus:border-violet-300 focus:border-2 disabled:bg-blue-300 disabled:cursor-not-allowed"
