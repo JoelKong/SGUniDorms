@@ -39,7 +39,7 @@ export default function RatingForm({
 
   return (
     <section className="w-[100%] h-[100%] fixed top-0 left-0 flex justify-center items-center z-50 backdrop-blur-lg backdrop-brightness-50 animate-fade">
-      <div className="border-2 border-black shadow-inner w-[95vw] md:w-[40vw] h-[80%] rounded-xl bg-gradient-to-br from-[#46458f] to-[#e9b2c08a] flex justify-center relative p-8">
+      <div className="border-2 border-black shadow-inner w-[95vw] md:w-[40vw] h-[95%] rounded-xl bg-gradient-to-br from-[#46458f] to-[#e9b2c08a] flex justify-center relative p-8">
         {nextPage && (
           <ReviewForm
             setNextPage={setNextPage}

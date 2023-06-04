@@ -72,7 +72,7 @@ export default function Navigation({ session }: any): JSX.Element {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 22 22"
-                  className="md:scale-100 scale-150 w-16 h-16"
+                  className="md:scale-100 scale-150"
                   strokeWidth={1.5}
                   stroke="currentColor"
                   onClick={() => setToggleState({ isPaneOpen: true })}
