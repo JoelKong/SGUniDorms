@@ -21,26 +21,26 @@ export default function Home({ session, dormData }: any) {
     <>
       <Head>
         <title>
-          {router.query.dorms} reviews | View {router.query.dorms} reviews,
-          {router.query.dorms} ratings, Discuss about {router.query.dorms} hall
+          {router.query.dorm} reviews | View {router.query.dorm} reviews,
+          {router.query.dorm} ratings, Discuss about {router.query.dorm} hall
           life and culture
         </title>
         <meta
           name="description"
-          content={`${router.query.dorms} dorm reviews, rate ${router.query.dorms}, discuss in real time about ${router.query.dorms} hall life and culture.`}
+          content={`${router.query.dorm} dorm reviews, rate ${router.query.dorm}, discuss in real time about ${router.query.dorm} hall life and culture.`}
         />
         <meta
           name="og:title"
-          content={`${router.query.dorms} reviews | View ${router.query.dorms} reviews, ratings,
-          Discuss about ${router.query.dorms} hall life and culture`}
+          content={`${router.query.dorm} reviews | View ${router.query.dorm} reviews, ratings,
+          Discuss about ${router.query.dorm} hall life and culture`}
         />
         <meta
           property="og:description"
-          content={`${router.query.dorms} dorm reviews, rate ${router.query.dorms}, discuss in real time about ${router.query.dorms} hall life and culture.`}
+          content={`${router.query.dorm} dorm reviews, rate ${router.query.dorm}, discuss in real time about ${router.query.dorm} hall life and culture.`}
         />
         <meta
           property="og:url"
-          content={`https://www.sgunidorms.com/${router.query.dorms}`}
+          content={`https://www.sgunidorms.com/${router.query.dorm}`}
         />
         <meta property="og:type" content="website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
