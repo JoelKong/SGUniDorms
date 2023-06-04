@@ -86,8 +86,10 @@ export default function ReviewForm({
             <IoChevronBackCircleSharp className="scale-150 text-xl" />
           </button>
         </header>
-        <section className="flex flex-col h-full w-full justify-evenly">
-          <p className="tracking-wider text-lg text-left pl-1 md:mt-0 mt-4">{`Share the pros and cons as well as your detailed experience staying in ${router.query.dorm}.`}</p>
+        <section className="flex flex-col h-full w-full mt-6 items-center">
+          <div className="tracking-wider text-lg text-left pl-1 md:mt-0 mt-4">
+            <p>{`Share the pros and cons as well as your detailed experience staying in ${router.query.dorm}.`}</p>
+          </div>
           <textarea
             onChange={(e) => setReview(e.target.value)}
             value={review}
@@ -96,20 +98,20 @@ export default function ReviewForm({
             disabled={disable}
             maxLength={1000}
             placeholder="Write a detailed and helpful comment that is at least 100 characters"
-            className="w-full border border-gray-400 shadow rounded-xl placeholder-gray-400 p-4 text-black tracking-wide disabled:bg-gray-300 disabled:cursor-not-allowed"
+            className="w-full mt-10 mb-10 border border-gray-400 shadow rounded-xl placeholder-gray-400 p-4 text-black tracking-wide disabled:bg-gray-300 disabled:cursor-not-allowed"
           ></textarea>
+          <button
+            className="flex justify-center w-3/4 h-10 md:mt-0 mt-4 tracking-wider text-white hover:bg-blue-600 bg-blue-500 rounded-md font-semibold focus:outline-none focus:border-violet-300 focus:border-2 disabled:bg-blue-300 disabled:cursor-not-allowed"
+            onClick={() => submitRatingAndReview()}
+            disabled={disable}
+          >
+            {disable ? (
+              <div className="animate-spin w-5 h-5 rounded-full border-4 border-white border-t-violet-300 self-center"></div>
+            ) : (
+              <p className="self-center">Submit</p>
+            )}
+          </button>
         </section>
-        <button
-          className="flex justify-center w-3/4 h-10 md:mt-0 mt-4 tracking-wider text-white hover:bg-blue-600 bg-blue-500 rounded-md font-semibold focus:outline-none focus:border-violet-300 focus:border-2 disabled:bg-blue-300 disabled:cursor-not-allowed"
-          onClick={() => submitRatingAndReview()}
-          disabled={disable}
-        >
-          {disable ? (
-            <div className="animate-spin w-5 h-5 rounded-full border-4 border-white border-t-violet-300 self-center"></div>
-          ) : (
-            <p className="self-center">Submit</p>
-          )}
-        </button>
       </div>
     </>
   );

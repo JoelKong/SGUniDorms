@@ -101,7 +101,7 @@ export default function Review({ session, dormData }: any): JSX.Element {
                     >
                       {dateDifference(review.timeStamp)}
                     </div>
-                    <section className="pb-6 break-all tracking-wide leading-6 pr-4">
+                    <section className="pb-6 tracking-wide leading-6 pr-4 text-sm md:text-lg font-light">
                       {review.review}
                     </section>
                     <div className="flex flex-col justify-evenly w-4/4 h-4/5">
