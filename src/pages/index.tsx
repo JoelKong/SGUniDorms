@@ -11,20 +11,18 @@ export default function Home({ session }: any) {
   return (
     <>
       <Head>
-        <title>
-          SgUniDorms | View singapore university and hall dorm reviews
-        </title>
+        <title>SgUniDorms | Singapore University Dorm and Hall Reviews</title>
         <meta
           name="description"
-          content="Singapore univerisity and hall dorm reviews, rate singapore university dorms, chat about hall life."
+          content="View singapore univerisity hall and dorm reviews, rate singapore university dorms anonymously, discuss about hall culture."
         />
         <meta
           name="og:title"
-          content="SgUniDorms | View singapore university and hall dorm reviews"
+          content="SgUniDorms | Singapore University Dorm and Hall Reviews"
         />
         <meta
           property="og:description"
-          content="Singapore univerisity and hall dorm reviews, rate singapore university dorms, chat about hall life."
+          content="View singapore univerisity hall and dorm reviews, rate singapore university dorms anonymously, discuss about hall culture."
         />
         <meta property="og:url" content="https://www.sgunidorms.com/" />
         <meta property="og:type" content="website" />
