@@ -86,7 +86,7 @@ export default function ReviewForm({
             <IoChevronBackCircleSharp className="scale-150 text-xl" />
           </button>
         </header>
-        <section className="flex flex-col h-full w-full mt-6 items-center">
+        <section className="flex flex-col h-full w-full mt-6 items-center md:justify-evenly">
           <div className="tracking-wider text-lg text-left pl-1 md:mt-0 mt-4">
             <p>{`Share the pros and cons as well as your detailed experience staying in ${router.query.dorm}.`}</p>
           </div>
