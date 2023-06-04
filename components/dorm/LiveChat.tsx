@@ -89,7 +89,7 @@ export default function LiveChat({ session, setForum }: any): JSX.Element {
         </form>
         <div className="flex items-center flex-col flex-nowrap w-[100%] h-[90%]">
           <header className="relative w-full text-center font-bold text-md md:text-2xl tracking-wide drop-shadow-2xl">
-            <p className="text-center">{`${router.query.dorm} Chat`}</p>
+            <h2 className="text-center">{`${router.query.dorm} Chat`}</h2>
             <button
               className="text-pink-400 w-8 cursor-pointer hover:text-pink-500 absolute right-0 top-0"
               onClick={() => setForum(false)}

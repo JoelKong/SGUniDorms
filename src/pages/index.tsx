@@ -14,7 +14,7 @@ export default function Home({ session }: any) {
         <title>SgUniDorms | Singapore University Dorm and Hall Reviews</title>
         <meta
           name="description"
-          content="View singapore univerisity hall and dorm reviews, rate singapore university dorms anonymously, discuss about hall culture."
+          content="View singapore university hall and dorm reviews, rate and review singapore university dorms anonymously, discuss in real time about hall culture."
         />
         <meta
           name="og:title"
@@ -22,7 +22,7 @@ export default function Home({ session }: any) {
         />
         <meta
           property="og:description"
-          content="View singapore univerisity hall and dorm reviews, rate singapore university dorms anonymously, discuss about hall culture."
+          content="View singapore university hall and dorm reviews, rate and review singapore university dorms anonymously, discuss in real time about hall culture."
         />
         <meta property="og:url" content="https://www.sgunidorms.com/" />
         <meta property="og:type" content="website" />

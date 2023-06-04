@@ -22,20 +22,21 @@ export default function Home({ session, dormData }: any) {
       <Head>
         <title>
           {router.query.dorms} reviews | View {router.query.dorms} reviews,
-          ratings, Discuss about hall life
+          {router.query.dorms} ratings, Discuss about {router.query.dorms} hall
+          life and culture
         </title>
         <meta
           name="description"
-          content={`${router.query.dorms} dorm reviews, rate ${router.query.dorms}, chat about hall life.`}
+          content={`${router.query.dorms} dorm reviews, rate ${router.query.dorms}, discuss in real time about ${router.query.dorms} hall life and culture.`}
         />
         <meta
           name="og:title"
           content={`${router.query.dorms} reviews | View ${router.query.dorms} reviews, ratings,
-          Discuss about hall life`}
+          Discuss about ${router.query.dorms} hall life and culture`}
         />
         <meta
           property="og:description"
-          content={`${router.query.dorms} dorm reviews, rate ${router.query.dorms}, chat about hall life.`}
+          content={`${router.query.dorms} dorm reviews, rate ${router.query.dorms}, discuss in real time about ${router.query.dorms} hall life and culture.`}
         />
         <meta
           property="og:url"

@@ -23,7 +23,7 @@ export default function HallSelection(): JSX.Element {
         {nusResidences.map((nus) => {
           return (
             <option key={uuidv4()} value={`/${nus}`}>
-              {nus}
+              <span>{nus}</span>
             </option>
           );
         })}
@@ -31,7 +31,7 @@ export default function HallSelection(): JSX.Element {
         {ntuResidences.map((ntu) => {
           return (
             <option key={uuidv4()} value={`/${ntu}`}>
-              {ntu}
+              <span>{ntu}</span>
             </option>
           );
         })}
@@ -39,7 +39,7 @@ export default function HallSelection(): JSX.Element {
         {smuResidences.map((smu) => {
           return (
             <option key={uuidv4()} value={`/${smu}`}>
-              {smu}
+              <span>{smu}</span>
             </option>
           );
         })}

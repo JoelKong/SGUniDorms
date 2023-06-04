@@ -12,7 +12,7 @@ export default function Footer(): JSX.Element {
         <Link href="https://ko-fi.com/joelkong" target="_blank">
           <Image
             src="https://storage.ko-fi.com/cdn/kofi2.png?v=3"
-            alt="Buy Me a Coffee at ko-fi.com"
+            alt="Donation for SgUniDorms"
             style={{ border: "0px" }}
             height={36}
             width={142}

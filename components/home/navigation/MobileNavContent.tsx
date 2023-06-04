@@ -16,8 +16,8 @@ export default function MobileNavContent({ setToggleState }: any): JSX.Element {
 
   return (
     <>
-      <div className="flex flex-col justify-center">
-        <p
+      <section className="flex flex-col justify-center">
+        <span
           className="text-gray-500 text-left rounded-md text-md font-medium cursor-pointer flex"
           onClick={() =>
             setSchoolToggle((prev: any) =>
@@ -28,7 +28,7 @@ export default function MobileNavContent({ setToggleState }: any): JSX.Element {
           }
         >
           NUS <MdOutlineArrowDropDown className="text-2xl" />
-        </p>
+        </span>
         {schoolToggle.nus && (
           <MobileSubNavigation
             schoolResidences={nusResidences}
@@ -37,7 +37,7 @@ export default function MobileNavContent({ setToggleState }: any): JSX.Element {
         )}
         <hr className="pb-10"></hr>
 
-        <p
+        <span
           className="text-gray-500 text-left rounded-md text-md font-medium cursor-pointer flex"
           onClick={() =>
             setSchoolToggle((prev: any) =>
@@ -48,7 +48,7 @@ export default function MobileNavContent({ setToggleState }: any): JSX.Element {
           }
         >
           NTU <MdOutlineArrowDropDown className="text-2xl" />
-        </p>
+        </span>
         {schoolToggle.ntu && (
           <MobileSubNavigation
             schoolResidences={ntuResidences}
@@ -57,7 +57,7 @@ export default function MobileNavContent({ setToggleState }: any): JSX.Element {
         )}
         <hr className="pb-10"></hr>
 
-        <p
+        <span
           className="text-gray-500 text-left rounded-md text-md font-medium cursor-pointer flex"
           onClick={() =>
             setSchoolToggle((prev: any) =>
@@ -68,7 +68,7 @@ export default function MobileNavContent({ setToggleState }: any): JSX.Element {
           }
         >
           SMU <MdOutlineArrowDropDown className="text-2xl" />
-        </p>
+        </span>
         {schoolToggle.smu && (
           <MobileSubNavigation
             schoolResidences={smuResidences}
@@ -76,7 +76,7 @@ export default function MobileNavContent({ setToggleState }: any): JSX.Element {
           />
         )}
         <hr className="pb-10"></hr>
-      </div>
+      </section>
     </>
   );
 }

@@ -2,7 +2,7 @@ import RatingForm from "./RatingForm";
 import { BiEdit } from "react-icons/bi";
 import { FaStar } from "react-icons/fa";
 import { MdOutlineForum } from "react-icons/md";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
 import LiveChat from "./LiveChat";
@@ -48,7 +48,7 @@ export default function Review({ session, dormData }: any): JSX.Element {
       {forum && <LiveChat session={session} setForum={setForum} />}
       <section className="lg:w-[55vw] sm:w-[90vw] w-[100vw]">
         <div className="pt-5 font-semibold text-lg text-gray-400 tracking-wide flex justify-between items-center h-20">
-          <p className="sm:text-xl text-sm sm:pl-0 pl-4">{`Browse ${dormData.review.length} reviews`}</p>
+          <h3 className="sm:text-xl text-sm sm:pl-0 pl-4">{`Browse ${dormData.review.length} reviews`}</h3>
           <div>
             <button
               className="text-white px-2 py-1.5 rounded-md sm:text-lg text-xs font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 h-fit"
@@ -90,8 +90,8 @@ export default function Review({ session, dormData }: any): JSX.Element {
                           : "bg-red-400"
                       }`}
                     >
-                      <p className="font-semibold">Overall</p>
-                      <p className="font-bold">{review.totalAvgStars}</p>
+                      <h1 className="font-semibold">Overall</h1>
+                      <span className="font-bold">{review.totalAvgStars}</span>
                     </div>
                   </div>
                   <div className="flex flex-col p-4 justify-around">
@@ -101,9 +101,9 @@ export default function Review({ session, dormData }: any): JSX.Element {
                     >
                       {dateDifference(review.timeStamp)}
                     </div>
-                    <div className="pb-6 break-all tracking-wide leading-6 pr-4">
+                    <section className="pb-6 break-all tracking-wide leading-6 pr-4">
                       {review.review}
-                    </div>
+                    </section>
                     <div className="flex flex-col justify-evenly w-4/4 h-4/5">
                       <div className="flex flex-row w-full">
                         <span className="w-16">Room</span>

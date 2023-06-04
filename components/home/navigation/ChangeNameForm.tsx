@@ -73,9 +73,9 @@ export default function ChangeNameForm({
           >
             <XMarkIcon />
           </div>
-          <div className="font-bold text-2xl tracking-wide drop-shadow-2xl text-white">
+          <span className="font-bold text-2xl tracking-wide drop-shadow-2xl text-white">
             Change Name
-          </div>
+          </span>
           <input
             className="mt-10 pl-2 pr-2 w-full md:w-3/4 h-9 rounded-md font-semibold focus:outline-none focus:border-violet-300 focus:border-4 border-4 tracking-wide"
             placeholder="Display Name"

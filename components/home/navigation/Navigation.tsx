@@ -31,7 +31,7 @@ export default function Navigation({ session }: any): JSX.Element {
       )}
       <div className="w-full h-20"></div>
       <nav className="fixed top-0 left-0 w-full backdrop-brightness-50">
-        <div className="mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 w-full">
             <div className="flex items-center justify-between w-full">
               <div className="flex-shrink-0">
@@ -39,11 +39,11 @@ export default function Navigation({ session }: any): JSX.Element {
                   <div className="flex items-center">
                     <Image
                       src="/sgdorm.png"
-                      alt="SGUniDorm"
+                      alt="A logo of SGUniDorms"
                       width="40"
                       height="40"
                     />
-                    <span className={styles.titleGradient}>SGUniDorms</span>
+                    <h1 className={styles.titleGradient}>SGUniDorms</h1>
                   </div>
                 </Link>
               </div>
@@ -106,14 +106,14 @@ export default function Navigation({ session }: any): JSX.Element {
                 onMouseOver={() => setActiveElement("nus")}
                 onMouseOut={() => setActiveElement(null)}
               >
-                <p
+                <h2
                   className="hidden md:block text-gray-400 w-[75px] text-center hover:text-white px-3 py-2 rounded-md text-md font-medium cursor-pointer"
                   onClick={() =>
                     setActiveElement((prev) => (prev === "nus" ? null : "nus"))
                   }
                 >
                   NUS
-                </p>
+                </h2>
                 {activeElement === "nus" && (
                   <>
                     <div className="w-full h-0 border-b-4 border-b-indigo-400"></div>
@@ -130,14 +130,14 @@ export default function Navigation({ session }: any): JSX.Element {
                 onMouseOver={() => setActiveElement("ntu")}
                 onMouseOut={() => setActiveElement(null)}
               >
-                <p
+                <h2
                   className="hidden md:block text-gray-400 w-[75px] text-center hover:text-white px-3 py-2 rounded-md text-md font-medium cursor-pointer"
                   onClick={() =>
                     setActiveElement((prev) => (prev === "ntu" ? null : "ntu"))
                   }
                 >
                   NTU
-                </p>
+                </h2>
                 {activeElement === "ntu" && (
                   <>
                     <div className="w-full h-0 border-b-4 border-b-indigo-400"></div>
@@ -154,14 +154,14 @@ export default function Navigation({ session }: any): JSX.Element {
                 onMouseOver={() => setActiveElement("smu")}
                 onMouseOut={() => setActiveElement(null)}
               >
-                <p
+                <h2
                   className="hidden md:block text-gray-400 w-[75px] text-center hover:text-white px-3 py-2 rounded-md text-md font-medium cursor-pointer"
                   onClick={() =>
                     setActiveElement((prev) => (prev === "smu" ? null : "smu"))
                   }
                 >
                   SMU
-                </p>
+                </h2>
                 {activeElement === "smu" && (
                   <>
                     <div className="w-full h-0 border-b-4 border-b-indigo-400"></div>
@@ -182,16 +182,16 @@ export default function Navigation({ session }: any): JSX.Element {
                       className="text-white px-3 py-1.5 rounded-md text-md font-medium bg-blue-500 transition duration-300 ease-in-out hover:scale-110 hover:bg-indigo-500 w-24"
                       onClick={() => signIn("google")}
                     >
-                      <p className="flex items-center">
+                      <span className="flex items-center">
                         Log In <FiLogIn className="ml-1 mt-[0.1rem]" />
-                      </p>
+                      </span>
                     </button>
                   )}
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </nav>
     </>
   );

@@ -6,7 +6,7 @@ export default function MobileSubNavigation({
 }: any): JSX.Element {
   return (
     <nav className=" text-violet-700 h-fit font-bold animate-fade">
-      <div className="flex flex-wrap justify-evenly">
+      <section className="flex flex-wrap justify-evenly">
         {schoolResidences.map((residence: String, index: any): JSX.Element => {
           return (
             <Link
@@ -15,11 +15,11 @@ export default function MobileSubNavigation({
               className="pl-5 h-8"
               onClick={() => setToggleState({ isPaneOpen: false })}
             >
-              {residence}
+              <span>{residence}</span>
             </Link>
           );
         })}
-      </div>
+      </section>
     </nav>
   );
 }
